@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-
+    
     <!-- 전부 외우기 -->
     <!-- 
         1. <input type='text'> 태그
@@ -76,6 +76,58 @@
         <!-- 이메일은 만들어져는 있지만, 오류?를 잡아낼수없어서 나중에 다른거 더 걸어줄거임.. 참고만하기. -->
         <br> 
     </p>
-    
+
+    <!-- 3. <textarea> 태그 : 여러줄 입력이 필요할떄 쓰임 / 닫아주는 애가 있음 / 2줄 20칸이 기본임(숫자입력시)-->
+    <p>
+
+        <!-- 디폴트 : 2행 20열 -->
+        <textarea></textarea>
+        <br>
+        <!-- rows 속성 : 행, cols 속성 : 열 -->
+        <textarea rows="3" cols="30"></textarea>
+        <br>
+
+        <!-- value 속성 대신 태그 내부 택스트가 입력된 값을 저장한다. -->
+        <textarea>안녕하세요</textarea>
+    </p>
+
+    <!-- 4. '단일' 선택 : <input type="radio"> ==> 동그라미 안에 체크 -->
+    <!-- name 속성 : 같은 name 을 가지는 radio가 하나처럼 동작한다 -->
+    <!-- name을 주지 않으면 남/여 둘다 눌림 -->
+    <p>
+
+        <!-- 여기 아래 까먹지 말기!!!!! -->
+        <input type="radio" name="gender">남
+        <input type="radio" name="gender">여
+        <br>
+        <!-- gender는 변수같은거임. 내가 이름 주면 됨 -->
+        <!-- name 속성은 변수다. 변수 이름 주는거. -->
+        <!-- 여기까지 변수를 열었는데. value가 비어 있는 상태, 출력하면 그럴싸하게 나오지만. 오류가 있음. -->
+
+        <!-- value 속성 : 어떤 radio를 선택했는지 알기 위해서 반드시 추가해야 한다. -->
+        <input type="radio" name="gender" value="male">남
+        <input type="radio" name="gender" value="female">여
+    </p>
+
+    <!-- 5. 다중 선택 : <input type="checkbox" -->
+    <p>
+            <!-- 단독 사용이 가능하다. -->
+            <input type="checkbox">모두 동의 합니다
+            <br>
+            <!-- name 속성 :같은 name을 가진 checkbox들은 하나의 배열처럼 동작한다 -->
+            <input type="checkbox" name="hobbies">운동
+            <input type="checkbox" name="hobbies">여행
+            <br>
+            <!-- name 속성 :같은 name을 가진 checkbox들은 하나의 배열처럼 동작한다 -->
+            <input type="checkbox" name="hobbies" value="1">운동
+            <input type="checkbox" name="hobbies" value="2">여행
+            <input type="checkbox" name="hobbies" value="4">독서
+            <input type="checkbox" name="hobbies" value="8">영화
+    </p>
+
+
+
+            
+
 </body>
 </html>
