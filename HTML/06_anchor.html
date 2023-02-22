@@ -13,11 +13,11 @@
         2. (일부 구역을) 링크로 만드는 태그이다.
         3. <a></a>
         4. 주요 속성
-            1) href   : 이동할 경로를 작성 하이퍼레퍼런스
+            1) href   : 이동할 경로를 작성 / 하이퍼레퍼런스
             2) title  : 풍선 도움말(마우스를 갖다대면 나타나는 메세지 창)
             3) target : 어떤 창으로 이동하는지 지정
-                (1) _self  : 현재 창으로 이동 (디폴트)
-                (2) _blank : 새 창으로 이동
+                (1) _self  : 현재 창에서 이동 (디폴트)
+                (2) _blank : 새 창을 열어서 이동
      -->
 
      <!-- 1. 이동이 없는 링크 -->
@@ -39,9 +39,16 @@
     -->
      <p>
          <a href="http://www.naver.com">
+
              <img src="../../images/logo_naver.png" width="200px">
 
          </a>
+     </p>
+
+     <p>
+        <a href="http://www.naver.com">
+            <img src="../../images/animal2.jpg" width="100">
+        </a>
      </p>
 
      <!-- 4. 다른 파일 링크 -->
@@ -103,6 +110,7 @@
                 <map name="맵이름">
                     <area shape="모양" coord="좌표작성" href="링크경로">
                 </map>
+                
             2) shape에 따른 coord 작성법
                 (1) shape="rect"   coord="시작x, 시작y, 종료x, 종료y"
                 (2) shape="circle" coord="중심x, 중심y, 반지름"
