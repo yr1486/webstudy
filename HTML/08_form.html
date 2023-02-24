@@ -12,7 +12,7 @@
     <!-- 
         1. <input type='text'> 태그
 
-        intput 제일 잘해야하는 영역임.
+        intput 제일 잘해야하는 영역.
 
         size 는 택스트상자의 크기 
         maxlength 는 최대 몇글자
@@ -34,10 +34,16 @@
         <!-- maxlength 속성 : 입력 가능한 최대 글자수는 4글자 -->
         <input type="text" maxlength="4">
         <br>
-
+        <hr>
         <!-- placeholder 속성 : 입력창에 안내메세지. -->
         <input type="text" placeholder="검색어를 입력하세요">
         <br>
+
+
+
+
+
+
 
         <!-- required 속성 : 필수 입력 -->
         <input type="text" required="required">
@@ -45,15 +51,23 @@
         입력창에 커서를 갖다대면 '이입력란에 작성하세요' 라는 문구가 뜸.-->
         <br>
 
+
+
         <!-- value 속성 : 입력한 값이 저장되는 속성 -->
         <!-- 벨류를 직접 입력한 경우, 변수값을 보여줄 경우가 있을때 -->
         <input type="text" value="날씨">
         <br>
 
+
+
         <!-- readonly 속성 : 입력된 값을 수정할 수 없게 만듬 -->
-        <input type="text" value="영희야 사랑해" readonly="readonly">
+        <input type="text" value="영희야 사랑해" readonly>
         <!-- 마찬가지로 ="readonly" 는 생략 할수 있다. -->
         <br>
+        <hr>
+
+
+
 
         <!-- disable 속성 : 입력 상자를 사용할 수 없도록 만듬 
 
@@ -61,8 +75,11 @@
                 열어주는 기능으로 쓸수 있음. 네이버회원가입 참고-->
         <input type="text" disabled="disabled">
         <!-- =뒤에 생략가능 -->
-
     </p>
+    <hr>
+
+
+
 
     <!-- 2. 기타 <input> 태그 -->
     <p>
@@ -81,13 +98,23 @@
         <br> 
     </p>
 
-    <!-- 3. <textarea> 태그 : 인풋은 한줄만 되니까. 여러줄 입력이 필요할떄 쓰임 / 닫아주는 애가 있음 / 2줄 20칸이 기본임(숫자입력시)-->
+
+
+
+
+    <!-- 3. 
+        <textarea> 태그
+            input은 한줄만 되니까. 여러줄 입력이 필요할떄 쓰임.
+            닫아주는 애가 있음.
+            2줄 20칸이 기본임(숫자입력시)
+    -->
         <!-- 열고닫고 항상 짝꿍. 기억하기 -->
     <p>
 
         <!-- 디폴트 : 2행 20열 -->
         <textarea></textarea>
         <br>
+
         <!-- rows 속성 : 행, cols 속성 : 열 -->
         <textarea rows="3" cols="30"></textarea>
         <br>
@@ -107,7 +134,7 @@
         <input type="radio" name="gender">남
         <input type="radio" name="gender">여
         <br>
-        <!-- gender는 변수같은거임. 내가 이름 주면 됨 -->
+        <!-- gender는 변수이름 같은거임. 내가 이름 주면 됨 -->
         <!-- name 속성은 변수다. 변수 이름 주는거. -->
         <!-- 여기까지 변수를 열었는데. value가 비어 있는 상태, 출력하면 그럴싸하게 나오지만. 오류가 있음. -->
 
@@ -121,7 +148,7 @@
             <!-- 단독 사용이 가능하다. -->
             <input type="checkbox">모두 동의 합니다
             <br>
-            <!-- name 속성 :같은 name을 가진 checkbox들은 하나의 배열처럼 동작한다 -->
+            <!-- name 속성 : 같은 name을 가진 checkbox들은 하나의 배열처럼 동작한다 -->
             <input type="checkbox" name="hobbies">운동
             <input type="checkbox" name="hobbies">여행
             <br>
