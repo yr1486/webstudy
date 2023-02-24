@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 어떤 요소를 화면에서 숨기는 기능 -->
+    <style>
+        .wrap1 > img:nth-of-type(2) {
+            visibility: hidden;
+            /* 자리는 차지하고 안보인다 */
+        }
+    </style>
+
+    <div class="wrap1">
+
+        <img src="../../images/flower1.jpg" width="200">
+        <img src="../../images/flower2.jpg" width="200">
+        <img src="../../images/flower3.jpg" width="200">
+
+    </div>
+
+    <style>
+
+        .wrap2 > div {
+            width: 200px;
+        }
+
+        .wrap2 > div > img {
+            width: 100%;
+        }
+
+        .wrap2 > div:hover > img {
+            visibility: hidden;
+
+        }
+    </style>
+
+    <div class="wrap2">
+            <div><img src="../../images/flower1.jpg"></div>
+            <div><img src="../../images/flower2.jpg"></div>
+            <div><img src="../../images/flower3.jpg"></div>
+    </div>
+
+
+
+    <style>
+        /* 정답을 안보이게 설정해보기 */
+        /* 버튼을 마우스에 갖다 대었을때 구성해보기 */
+
+    </style>
+    <div class="wrap3">
+        <h1>다음 중 블록 레벨이 아닌 태그는 무엇인가요?</h1>
+        <ol>
+            <li>&lt;div&gt;</li>
+            <li>&lt;ul&gt;</li>
+            <li>&lt;a&gt;</li>
+            <li>&lt;p&gt;</li>
+            <li>&lt;table&gt;</li>
+        </ol>
+
+        <a href="#">
+        
+        </a>
+    </div>
+
+
+</body>
+</html>
