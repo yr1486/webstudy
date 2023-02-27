@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <style>
+        /*
+            position: static;
+            1. 디폴트 값이다. (position을 지정하지 않으면 static이다.)
+            2. HTML 기본 배치를 따른다.
+            3. 상대적 위치 조정(top, bottom, left, right) 이 불가능하다.
+                오른쪽으로 이동하려면 왼쪽에 값을 주는 원리 이해하기. 이게 안된다는 거임.
+            
+         */
+
+        .wrap1 > div {
+            width: 300px;
+            height: 100px;
+            border: 1px solid gray;
+            /* position: static; 은 아래 메뉴가 동작하지 않는다 */
+            top: 50px; /* 위에서 50px 떨어뜨리기 (아래로 50px 이동) */
+            left: 50px; /* 왼쪽에서 50px를 떨어뜨리기 (오른쪽으로 50 이동) */
+        }
+    </style>
+    <div class="wrap1">
+        <div>static BOX</div>
+    </div>
+
+    <hr>
+
+    <style>
+        /*
+            position: relative;
+            1. HTML 기본 배치를 따른다.
+            2. 상대적 위치 조정(top, bottom, left, right)이 가능하다.
+            3. 원래 자신의 위치를 기준으로 top, bottom, left, right가 동작한다.
+            top, bottom, left, right : 옵셋이라고함
+        */
+        .wrap2 > div {
+            width: 300px;
+            height: 100px;
+            border: 1px solid gray;
+            position: relative;
+            top: 50px;
+            left: 50px;
+        }
+
+    </style>
+
+    <div class="wrap2">
+        <div>relative BOX</div>
+    </div>
+
+    <style>
+        /* 
+            position: absolute;
+            1. HTML 기본 배치를 따르지 않는다.
+            2. 상대적 위치 조정(top, bottom, left, right)이 가능하다.
+            3. 부모 요소의 position: static;이 아닌 경우 부모 요소를 기준으로
+                top, bottom, left, right가 동작한다.
+            4. 일반적으로 부모 요소가 position: relative;를 가지고 자식 요소가 position: absolute;를 가진다.
+
+         */
+
+         .wrap3 { /* 아래거의 부모 */
+            margin-top: 100px;
+            width: 300px;
+            height: 300px;
+            border: 1px solid crimson;
+            position: relative; /* 이거 해주고 안해주고의 차이 확인해보기*/
+
+         }
+         .wrap3 > div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid gray;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            /* 기본적인 흐름을 깰때 앱솔루트 사용 */
+
+        }
+
+
+
+    </style>
+
+    <div class="wrap3">
+        <div>absolute BOX</div>
+    </div>
+
+    <!-- 행박스 만들고, 단추가 위치할 오른쪽자식 박스 만들고 나서, 이제 그박스안에 버튼을 만드는게 나중에 -->
+    <style>
+        .wrap4 {
+            margin-top: 50px;
+            width: 300px;
+            height: 50px;
+            border: 1px solid gray;
+            position: relative; /*부모가 렐러티브 잡혀잇으면 십중팔구 자식에 앱솔루트주기위해서라고 알고있자*/
+        }
+        .wrap4 > .btn_box {
+            width: 80px;
+            height: 40px;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            display: flex;
+        }
+
+        .wrap4 > .btn_box > div {
+            width: 50%;
+            height: 100%;
+            border: 1px solid gray;
+
+        }
+        /* 여기까지가 버튼이위치할 위치를 잡는거. */
+
+        .wrap4 > .btn_box > div + div { /*첫번째꺼 뺴고 두번째div부터~세번째. 네번째 쭉 해당됨 */
+            border-left: 0;
+            
+ 
+        }
+</style>
+
+    <div class="wrap4">
+        <p>증시</p>
+        <div class="btn_box">
+            <div>&lt;</div>
+            <div>&gt;</div>
+            <!--  
+                <div>&lt;</div>
+                <div>&gt;</div>
+            -->
+            <!-- 이거말고 폰트어썸가서 찾아서 해도되 -->
+        </div>
+    </div>
+
+    <style>
+        /* 
+            position: fixed;
+            1. HTML 문서의 특정 위치에 고정시키는 방식이다.
+            2. 상대적 위치 조정(top, bottom, left, right)이 가능하다.
+            3. 브라우저 화면 전체를 기준으로 top, bottom, left, right가 동작한다.
+            4. position: fixed; 된 영역은 다른 영역을 가린다.
+            ex)
+            상단바 고정, 광고창 고정. 
+         */
+        .wrap5 {
+            width: 100%;
+            height: 100px;
+            background-color: cyan;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+        }
+
+    </style>
+
+    <div class="wrap5">
+        <div>fixed BOX</div>
+    </div>
+
+
+    <style>
+        .wrap6 {
+            margin-top: 50px;
+            width: 500px;
+            height: 500px;
+            border: 1px solid gray;
+            position: relative; /*부모가 렐러티브 잡혀잇으면 십중팔구 자식에 앱솔루트주기위해서라고 알고있자*/
+        }
+
+        .wrap6 > .btn_box {
+            width: 80px;
+            height: 40px;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            display: flex;
+        }
+
+        .wrap6 > div.spring {
+            top: ;
+            left: ;
+        }
+
+        .wrap6 > div.summer {
+            top: ;
+            left: ;
+        }
+
+        .wrap6 > div.automn {
+            top: ;
+            left: ;
+        }
+
+        .wrap6 > div.winter {
+            top: ;
+            left: ;
+        }
+
+    </style>
+
+    <div class="wrap6">
+        <div class="btn_box">
+            <div class="spring">봄</div>
+            <div class="summer">여름</div>
+            <div class="automn">가을</div>
+            <div class="winter">겨울</div>
+        </div>
+
+    </div>
+
+    <style>
+        /* 
+            .here은 before 나, after처리를 했을떄, 부모가 된다.
+            font-weigth:900;
+            position: relative;
+         */
+        .here {
+            color: crimson;
+            font-weight: 900;
+            cursor: help;
+            position: relative;
+        }
+        /* 자식 */
+        .here:hover::after {
+            content: attr(data-describe);
+            position: absolute;
+            top: 20px;
+            left: 50px;
+            width: 100px;
+            height: 20px;
+            background-color: lightgoldenrodyellow;
+            border: 1px solid orange;
+            border-radius: 2px;
+
+        }
+
+    </style>
+    <p>
+        <span class="here" data-describe="풍선도움말">여기</span>를 선택하세요.
+        <!-- describe는 내가 바꿀수 있는 이름임. -->
+    </p>
+
+
+
+
+
+
+
+
+</body>
+</html>
