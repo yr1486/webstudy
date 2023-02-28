@@ -15,8 +15,8 @@
         }
     </style>
     <h1> hello world</h1>
-
     <hr>
+
 
     <style>
         /* 2. 클래스 선택자 */
@@ -26,30 +26,33 @@
 
     </style>
     <p class="paragraph">hello world</p>
-    
     <hr>
+
+
 
     <style>
         /* 3. 아이디 선택자 */
         #content {
-            color: brown;
+            color: red;
         }
     </style>
     <p id="content">hello world</p>
+    <hr>
+
+
 
     <style>
-        /* 4. 자식 선택자 : 부모 > 자식 순, > 비교로 만들어준다 */
+        /* 4. 자식 선택자 : 부모 > 자식 순,   > 기호를 표시하여 만들어준다 */
         ul > li {
             color: orange;
         }
         ul > li > a {
-            color: orange;
-            text-decoration: none;
+            color: red;
+            text-decoration: none; /*밑줄 안한다.*/
         }
         /* 부모는 바로 자기 밑에 애만 자식이라고 한다.
-            그래서 여러가지 경우로 자식의 자식, 형제 등을 불러오는 방법을 아래와 같이 배워보자.
-        */
-        
+            그래서 여러가지 경우로 자식의 자식, 형제  등을 불러오는 방법을 아래와 같이 배워보자.
+        */  
     </style>
     <ul>
 
@@ -65,9 +68,12 @@
         <li>
             <a href="javascript:void(0)">winter</a>
         </li>
- 
-
     </ul>
+    <hr>
+
+
+
+
     <!-- ul의 자식 li태그 -->
 
     <style>
@@ -79,6 +85,7 @@
 
         }
     </style>
+
     <dl>
         <dt>
             <strong>이름</strong>
@@ -89,9 +96,13 @@
         </dt>
         <dd>뜨거운 물을 붓고 4분간 기다린다</dd>
     </dl>
+    <hr>
+
+
 
     <style>
         /* 6. 모든 형제 : ~ 로 불러오기. */
+
         .europe > h3 ~p {
             color: yellowgreen;
         }
@@ -104,6 +115,8 @@
         <p>스페인</p>
     </div>
     <!-- div는 블록레벨 -->
+    <hr>
+
 
     <style>
         /* 7. 인접 형제 : + 를 사용한다. (인접한 형제만 불러오기임)   */
@@ -118,6 +131,10 @@
         <p>태국</p>
         <p>중국</p>
     </div>
+    <hr>
+
+
+
 
     <style>
         /*
@@ -141,6 +158,9 @@
             <li>돈까스</li>
         </ol>
     </div>
+    <hr>
+
+    
 
     <style>
         /*
@@ -163,7 +183,19 @@
         /* 속성 선택자임 */
     </style>
 
+    <!-- 
+         method 속성은 속성값으로는 GET과 POST 두 가지 중 하나를 선택할 수 있습니다.
+         GET 방식은 URL에 폼 데이터를 추가하여 서버로 전달하는 방식입니다.
+         GET 방식의 HTTP 요청은 브라우저에 의해 캐시되어(cached) 저장됩니다.
 
+        또한, GET 방식은 보통 쿼리 문자열(query string)에 포함되어 전송되므로, 길이의 제한이 있습니다.
+        따라서 보안상 취약점이 존재하므로, 중요한 데이터는 POST 방식을 사용하여 요청하는 것이 좋습니다.
+
+        POST 방식은 폼 데이터를 별도로 첨부하여 서버로 전달하는 방식입니다.
+        POST 방식의 HTTP 요청은 브라우저에 의해 캐시되지 않으므로, 브라우저 히스토리에도 남지 않습니다.
+        또한, POST 방식의 HTTP 요청에 의한 데이터는 쿼리 문자열과는 별도로 전송됩니다.
+        따라서 데이터의 길이에 대한 제한도 없으며, GET 방식보다 보안성이 높습니다.
+     -->
 
     <form method="post">
         <input type="text" placeholder="아이디">
@@ -185,8 +217,6 @@
             color: gray;
             text-decoration: none;
         }
-
-        
         .link:hover {
             color: orange;
         }
@@ -198,6 +228,14 @@
     <p>
         <a class="link" href="javascript:void(0)">링크</a>
     </p>
+    <hr>
+
+
+
+
+
+
+
 
     <style>
         /*
@@ -207,7 +245,7 @@
         */
 
         #name:focus {
-            color: darkcyan;
+            color: red;
             
         }
 
@@ -225,6 +263,7 @@
         <div>
             <input type="radio" name="gender" value="male" id="male">
             <label for="male">남자</label>
+            
             <input type="radio" name="gender" value="female" id="female">
             <label for="female">여자</label>
         </div>
