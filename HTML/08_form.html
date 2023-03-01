@@ -238,49 +238,50 @@
                 그럼 디비에서 작업을 like ㅂ% 써가지고 
             -->
             <p>
+                <div>input과 datalist_option 사용</div>
                 <input type="text" list="domain">
-                <datalist id="domain">
-                    <!-- id가 도메인인 데이터리스트를 나의 목록으로 가지겠다. => input 을 만든거라 보면됨. -->
+                <datalist id="domain"> <!-- id가 도메인인 데이터리스트를 나의 목록으로 가지겠다. => input 을 만든거라 보면됨. -->
                     <option value="naver.com"/>
                     <option value="kakao.com"/>
                     <option value="gmail.com"/>
                     <!-- 나홀로 태그 ! -->
                 </datalist>
-            </p>
+            </p><hr>
 
         <!-- 8. 라벨 붙이기 : <label> 태그 -->
-            <p>
-                <!-- <label for="입력요소id속성값" -->
-                <input type="radio" name="gender" value="male" id="male">
+
+                <!-- <label for="입력요소 id속성값" -->
                 <!-- 인풋에 아이디가 있어야하고, id는 유니크 여야함!!!,  -->
-                <label for="male">남</label>
-
-                <input type="radio" name="gender" value="female" id="female">
-                <label for="male">여</label>
-
-            </p>
 
             <p>
+                <div> radio에 직접 체크 외에 , 설정한 곳을 눌러도 클릭이 되게 하는 라벨</div>
                 <label for="male">
-                    <input type="radio" name="gender" value="male" id="male">남
+                    <input type="radio" name="gender2" value="male" id="male">남
                 </label>
-                <label for="male">
-                    <input type="radio" name="gender" value="female" id="female">여
+                <label for="female">
+                    <input type="radio" name="gender2" value="female" id="female">여
                 </label>
             </p>
-    <!-- <form> 태그
+
+
+
+    <!-- 
+        <form> 태그
         1) <form> 태그 내부에 입력 태그들을 배치한다
         2) 서브밋(submit)은 <form> 태그 단위로 이루어진다.
                 (1) 서브밋 : <form> 태그에 속한 모든 입력 태그들에 입력된 값을
                              서버측으로 보내는 것을 말한다.
                              예: 네이버창에 검색어를 입력하고 '엔터'를 누르는 행위(또는 검색돋보기 클릭하는거, 
-                                 어째뜬 입력한 값을 네이버 서버측에 보내는거)를 서브밋이라고 한다. 서브밋한다. 인풋만하면 서브밋이안대, 폼도같이써야해
+                                 어째뜬 입력한 값을 네이버 서버측에 보내는거)를 서브밋이라고 한다. 서브밋한다. 인풋만하면 서브밋이안됨, 폼도 같이써야함
 
                 (2) 서버 경로를 action 속성에 작성하고, 보내는 방법을 method 속성에 작성한다.
+
                 (3) 주요 속성
+
                     (1) action
                         ① 입력된 값을 전송할 서버의 주소(경로)
                         ② 서버 내부 경로(URL Mapping)를 주로 작성
+
                     (2) method
                         ① GET 방식
                             - 디폴트(생략 가능)
@@ -290,6 +291,7 @@
                             - 전송할 데이터가 본문에 포함되므로 노출되지 않음
                             - 느린 처리, 보안 우수
                         ③
+
                     (3) enctype
 
     -->
