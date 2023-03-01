@@ -11,69 +11,56 @@
     <!-- 전부 외우기 -->
     <!-- 
         1. <input type='text'> 태그
+            닫히는 태그 없음.
+            intput 제일 잘해야하는 영역.
 
-        intput 제일 잘해야하는 영역.
-
-        size 는 택스트상자의 크기 
-        maxlength 는 최대 몇글자
+            -size 는 택스트상자의 크기 
+            -maxlength 는 최대 몇글자
     -->
+
     <p>
         <!-- 디폴트로 type="text" 적용 -->
+        <div>input의 디폴트</div>
+        <input>
         <input>
         <br>
+        <hr>
         
-        <!-- size 속성 : 입력 상자 크기는 5 -->
-        <input type="text" size="5">
-        <br>
-
-        <!-- 입력 상자 크기는 5, 가능한 최대 글자수는 4글자 -->
-        <input type="text" size="5" maxlength="4">
-        <br>
-
-
-        <!-- maxlength 속성 : 입력 가능한 최대 글자수는 4글자 -->
-        <input type="text" maxlength="4">
+        <!-- input의 속성 종류 -->
+        <div>input의 사이즈와 글자수를 각각 필요 시 조절할 수 있음</div>
+        <input type="text" maxlength="4"><br>
+        <input type="text" size="5"><br>
+        <input type="text" size="10" maxlength="4"><br>
         <br>
         <hr>
+
         <!-- placeholder 속성 : 입력창에 안내메세지. -->
+        <div>입력창 안내메세지, 입력하면 사라지는 메세지</div>
         <input type="text" placeholder="검색어를 입력하세요">
-        <br>
-
-
-
-
-
-
-
+        <br><br>
+        
         <!-- required 속성 : 필수 입력 -->
+        <div>입력창에 커서를 대면 문구가 뜸</div>
         <input type="text" required="required">
-        <!-- ="required" 생략할 수 있다!! 수업에서는 생략할거임. 
-        입력창에 커서를 갖다대면 '이입력란에 작성하세요' 라는 문구가 뜸.-->
-        <br>
-
-
+        <!-- ="required" 생략할 수 있다!! 수업에서는 생략할거임.-->
+        <br><br><hr>    
 
         <!-- value 속성 : 입력한 값이 저장되는 속성 -->
-        <!-- 벨류를 직접 입력한 경우, 변수값을 보여줄 경우가 있을때 -->
+        <!-- 벨류를 직접 입력한 경우, 변수값을 보여줄 경우가 있을때
+             나중에 input botton에서 value를 사용하면 버튼의 이름이 되고, 유용하게 쓰임 -->
         <input type="text" value="날씨">
-        <br>
-
-
+        <br><br>
 
         <!-- readonly 속성 : 입력된 값을 수정할 수 없게 만듬 -->
         <input type="text" value="영희야 사랑해" readonly>
         <!-- 마찬가지로 ="readonly" 는 생략 할수 있다. -->
-        <br>
-        <hr>
-
-
-
+        <br><br>
 
         <!-- disable 속성 : 입력 상자를 사용할 수 없도록 만듬 
 
         예시> 회원가입할떄 인증번호입력창을 일단 막아놓고. 어떤 상황이 되면 다시
                 열어주는 기능으로 쓸수 있음. 네이버회원가입 참고-->
-        <input type="text" disabled="disabled">
+        <input type="text" disabled>
         <!-- =뒤에 생략가능 -->
     </p>
     <hr>
@@ -84,18 +71,23 @@
     <!-- 2. 기타 <input> 태그 -->
     <p>
         <!-- type="password" : 비밀번호 입력용 -->
+        <div>   비밀번호 입력</div>
         <input type="password" placeholder="비밀번호">
-        <br>
+        <br><br>
 
         <!-- type="number" : 숫자 입력용 -->
+        <div>숫자만 입력 가능</div>
         <input type="number" min="1" max="12">
         <!-- number 최대값, 최소값을 지정할 수 있음 -->
-        <br>
+        <br><br>
 
-        <!-- type="email" : 이메일 입력용 / 막 제한을 걸어놓는거, 아이디 한글입력이 안된다거나, 소문자입력해도 대문자로 바꿔준다거나. 이런작업은 자바스크립트에서 바꿀수있음 -->
+        <!-- type="email" : 이메일 입력용
+             정교한 기능은 없음: 제한을 거는 아이디 한글입력이 안되게, 소문자입력해도 대문자로 바꿔준다거나. 
+             이런작업은 자바스크립트에서 바꿀수있음 -->
+        <div>이메일 입력</div>
         <input type="email" placeholder="이메일">
         <!-- 이메일은 만들어져는 있지만, 오류?를 잡아낼수없어서 나중에 다른거 더 걸어줄거임.. 참고만하기. -->
-        <br> 
+        <br> <br><hr>
     </p>
 
 
@@ -112,71 +104,107 @@
     <p>
 
         <!-- 디폴트 : 2행 20열 -->
+        <div>textarea 디폴트 2행 20열</div>
+
         <textarea></textarea>
         <br>
 
-        <!-- rows 속성 : 행, cols 속성 : 열 -->
-        <textarea rows="3" cols="30"></textarea>
-        <br>
+        <!-- cols 속성 : 열 , rows 속성 : 행 -->
+        <div> 열과 행의 길이를 직접 조정 가능</div>
 
-        <!-- value 속성 대신 태그 내부 택스트가 입력된 값을 저장한다. -->
-        <textarea>안녕하세요</textarea>
+        <textarea cols="30" rows="3"></textarea>
+        <br><br>
+
+        <!-- 속성 value 대신 태그 내부 택스트가 입력된 값을 저장한다. -->
+        <div> 속성을 안쓰고 태그 사이에 값을 직접 입력 결과</div>
+        <textarea>안녕하세요</textarea><br>
+
+        <div>input과 같이 각 속성들이 올 수 있음</div>
+        <textarea placeholder="텍스트를 입력하세요"></textarea>
     </p>
+    <hr>
 
-    <!-- 4. '단일' 선택 : <input type="radio"> ==> 동그라미 안에 체크 -->
-    <!-- name 속성 : 같은 name 을 가지는 radio가 하나의 변수처럼 동작한다 
-        젠더라고 2번적었지만 실제로 하나의 메모리만?생겨서 같은속성으로 묶여서 하나의동작으로-->
-    <!-- name을 주지 않으면 남/여 둘다 눌림 -->
+
+
+
+    <!-- 4. 단일 선택 input (name 설정 시)
+
+        <input type="radio"> ==> 동그라미 input이 만들어진다.
+
+        name 속성 : 
+        input radio 태그를 사용할 때 같은 name 값을 가지는 태그는 하나의 변수처럼 동작한다.
+
+        name을 설정하면 설정된 name 안에서 1개만 클릭 되고,
+        name을 설정 하지 않으면 만들어논 input radio 태그를 하나씩 다 클릭 할 수 있음.
+    -->
+
+    <!-- 또 네임으로 구역을 정해줘야 한 페이지의 여러개의 태그들로 구성되어도 모두 적용이 안되고 네임속성만 적용됨. -->
+
     <p>
-
-        <!-- 여기 아래 까먹지 말기!!!!! -->
-
+        <div>input radio name</div>
         <input type="radio" name="gender">남
         <input type="radio" name="gender">여
-        <br>
-        <!-- gender는 변수이름 같은거임. 내가 이름 주면 됨 -->
-        <!-- name 속성은 변수다. 변수 이름 주는거. -->
-        <!-- 여기까지 변수를 열었는데. value가 비어 있는 상태, 출력하면 그럴싸하게 나오지만. 오류가 있음. -->
+        <br><br>
+        <!-- name은 태그의 속성, gender는 변수 이름, 변수는 원하는 이름으로 지어 줄 수 있다.-->
+        <!-- 여기까지 변수를 열었는데. value가 비어 있는 상태, 출력하면 그럴싸하게 나오지만.
+             나중에 다른 프로그램들? 과 사용할 시 어떤 걸 선택한지 모르는 오류가 생김. -->
 
         <!-- value 속성 : 어떤 radio를 선택했는지 알기 위해서 반드시 추가해야 한다. -->
-        <input type="radio" name="gender" value="male">남
-        <input type="radio" name="gender" value="female">여
+        <div>input radio는 name과 value 무조건 사용하기</div>
+        <input type="radio" name="gender1" value="male">남
+        <input type="radio" name="gender1" value="female">여
     </p>
 
-    <!-- 5. 다중 선택 : <input type="checkbox" -->
+    <!-- 5. 다중 선택 input
+        <input type="checkbox"> 
+        
+    -->
     <p>
             <!-- 단독 사용이 가능하다. -->
+            <div>input checkbox 단독 사용 예시</div>
             <input type="checkbox">모두 동의 합니다
-            <br>
-            <!-- name 속성 : 같은 name을 가진 checkbox들은 하나의 배열처럼 동작한다 -->
-            <input type="checkbox" name="hobbies">운동
-            <input type="checkbox" name="hobbies">여행
-            <br>
-            <!-- name 속성 :같은 name을 가진 checkbox들은 하나의 배열처럼 동작한다 -->
+            <br><br>
+
+            <!-- 여러개의 항목 체크도 가능하다.
+                name 속성 : 같은 name을 가진 checkbox들은 하나의 배열처럼 동작한다
+                value 속성 : 어떤 checkbox를 선택했는지 알기 위해서 반드시 추가해야 한다. 
+
+            -->
+            <div>input checkbox 여러개 사용 예시, 네임밸류 필수 </div>
             <input type="checkbox" name="hobbies" value="1">운동
             <input type="checkbox" name="hobbies" value="2">여행
             <input type="checkbox" name="hobbies" value="4">독서
             <input type="checkbox" name="hobbies" value="8">영화
     </p>
+    <hr>
 
-    <!-- 6. 목록 선택 : <select> 태그 -->
+    <!-- 6. '목록' 선택 : <select> 태그 
+            option이 따라다님. -->
         <p>
-            <!-- 하나만 고를수 있고, 입력되지 않는다 -->
-            <!-- 하나의 옵션을 선택할 수 있다. -->
+            <!-- 하나만 고를수 있고, 입력되지 않는다
+                하나의 옵션을 선택할 수 있다. -->
+                <div>select option 목록보기 </div>
             <select>
                 <option>naver.com</naver></option>
                 <option>kakao.com</naver></option>
                 <option>gmail.com</naver></option>
-            </select>
+            </select><br>
+
+            <div>select option 목록 보여주기 + size 추가 </div>
+            <select size="2">
+                <option>naver.com</naver></option>
+                <option>kakao.com</naver></option>
+                <option>gmail.com</naver></option>
+            </select><hr>
             
             <!-- multiple 속성 : 여러개의 옵션을 선택할 수 있다 -->
-            <select multiple="multiple">
-                <!-- 속성과 값이 같으면 생략이 가능하다!!! 생략 가능 -->
+            <div>select multiple 여러 옵션 선택하기</div>
+            <select multiple>
+                <!-- multiple 속성과 값이 같아서 생략됨 multiple="multiple" -->
                 <option>서울</option>
                 <option>경기</option>
                 <option>인천</option>
-    
-            </select>
+            </select><br>
 
             <!-- 셀렉트는 값이 하나만 오니까 String 으로 만들고
                  멀티플은 값이 2개 이상이 오니까 String[ ]으로 받는다. -->
@@ -184,7 +212,9 @@
             <!-- name  속성 : <select> 태그에 작성한다 -->
             <!-- value 속성 : <option> 태그에 작성한다 / 밸류의 값이 없으면 null값이 들어 있다.-->
 
-            <select name="direction">
+            <div>select에도 물론 네임과 밸류 속성을 써야함 
+                얘는 select태그에 name, option태그에 value를 주면 됨</div>   
+            <select name="direction"> <!--방향이라는뜻-->
                 <option value="">방향을 선택하세요</option>
                 <option value="east">동</option>
                 <option value="west">서</option>
