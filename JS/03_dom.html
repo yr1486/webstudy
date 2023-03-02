@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        /*
+        DOM
+        1. Document Object Model (문서 객체 모델)
+        2. HTML문서(document)의 구성 요소(태그) 를 객체(object)로 처리할 수 있는 방식이다.
+        객체로 만든다는 뜻.
+        3. 문서 객체 알아내기
+        css 생각하기. 
+        1) document.getElementById('아이디적어주기')- 중복값                                   : 변수로 처리 (문서객체가 하나만 있으니까)
+        2) document.getElementsByClass('클래스')    - 얘는 여러개 되니까  s 복수형으로 사용    : 배열로 처리
+        3) document.getElementsTagName('태그')      - div 가져오라하면 너무 많으니까 잘 안쓰임 : 배열
+        4) document.querySelector('선택자')           - 셀렉터 이용한 방법                       : 배열
+        5) document.querySelectorAll('선택자')                                                   : 배열
+        (하나의 요소밖에 없더라도 배열에 집어넣어서 사용한다)
+        */
+    </script>
+
+
+                <!--box2번 객체화(돔) 되는 걸 하는 중  -->
+
+
+    <script>
+        // DOM 처리할 구성 요소 (Element = 태그) 가 반드시 스크립트 보다 먼저 인식되야 한다.
+        // 이 세트들 지금 태그가 먼저 안와서 실행 안되는 거임
+        var box1 = document.getElementById(box1);
+        console.log(box1); //  콘솔에 null 이라고 뜸
+
+    </script>
+
+    <div id="box1">나중에 나타난 구성요소는 인식되지 않는다</div> 
+
+
+
+        
+        <!-- 한 태그 안에 아이디와 클래스를 둘다 줄 때 아이디와 클래스는 서로 영향을 주지 않아서 값이 같아도 상관 없음 
+              <div id="box1" class="box1">  -->
+        <!-- 돔 인식(객체만드는) 은 호이스팅 대상이 아니라 순서가 중요, id가 먼저와야함
+        반드시 스크립트 요소를 돔처리할때는 태그가 위에 있고 스크립트는 밑에 있어야 한다 -->
+    
+
+
+
+        <div id="box2" class="box2"></div>
+        <script>
+
+            //1. 아이디
+            var box2 = document.getElementById('box2');
+            console.log('box2');
+
+
+            //2. 클래스
+            var box2 = document.getElementsByClassName('box2');
+            console.log(box2);
+            
+            // 3. 태그
+            var div = document.getElementsByTagName('div');
+            console.log(div);
+
+            //콘솔창에 [] 묶여 있는데 이거 json .. 배열이라는 뜻   
+
+            
+            // 4. 선택자(querySelector)
+            var box2 = document.querySelector('#box2'); // id 무조건 한개, 여러개있더라도 그중 첫번쨰꺼만.
+            console.log(box2);
+
+            var box2 = document.querySelector('.box2'); // class
+            console.log(box2);
+
+            var div = document.querySelector('div'); // 태그
+            console.log(div);
+
+
+            // 5. 선택자(querySelectorAll)
+            var box2 = document.querySelectorAll('#box2');
+            console.log(box2);
+            // 콘솔 열어보면., 노드리스트. 인덱스:0이라 나오고, length의 길이 1로 표시되어 있음.
+
+            var box2 = document.querySelectorAll('.box2');
+            console.log(box2);
+
+            var div = document.querySelectorAll('div');
+            console.log(div);
+
+        </script>
+
+
+
+        
+        
+
+
+
+
+
+</body>
+</html>

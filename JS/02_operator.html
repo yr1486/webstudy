@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        /*
+            1. 산술 연산자
+                1) 더하기   : +
+                2) 빼기     : -
+                3) 곱하기   : *
+                4) 제곱     : ** (2 ** 3 = 2의 3제곱 : 8)
+                5) 나누기   : / (5 / 2 = 2.5)
+                6) 나머지   : % (5 % 1 = 1) 나머지가 1이면 홀수다 짝수다로 응용 가능
+                7) 몫       : 함수(parseInt(5/2) = 2 (2.5의 정수변환으로 해석됨 그래서 = 2)
+                              Math.floor(5/2) = 2)
+                8) 증감     : ++, --
+
+            2. 복합 연산자
+                1) +=
+                2) -=
+                3) *=, **=
+                4) /=, %=
+
+            3. 비교 연산자
+                1) 크다         : >
+                2) 크거나 같다  : >=
+                3) 작다         : <
+                4) 작거나 같다  : <=
+                5) 같다
+                    (1) ==      : 값만 비교         (1 ==  '1' 이면 true라고 반환함)
+                    (2) ===     : 값과 타입을 비교  (1 === '1' 이면 false라고 반환함. 완벽한 동등비교를 하려면 === 써야함)
+                    (3) 문자열도 이와 같은 걸로 비교함 (자바는 이퀄을 씀.)
+                6) 같지 않다
+                (1) !=  : 값만 비교
+                (2) !== : 값과 타입을 비교
+
+            4. 논리 연산자 (자바와 같음)
+                1) 논리 AND : &&
+                2) 논리 OR  : ||
+                3) 논리 NOT : !
+            
+            5. 조건 연산자(=삼항 연산자) , 자바와 동일
+                (조건식) ? true일 때 : false일 때 
+
+            6. 문자열 연산자 , 자바와 조금 다름
+                1) 문자열 연결 : +
+                2) + 이외의 산술 연산자(-,*,/ 등)는 연산에 포함된 문자열을
+                    숫자로 바꿔서 산술 연산으로 처리한다.
+
+        */
+
+       
+       var a = 10;
+       var b = 3;
+       console.log(a ** 3);
+       console.log(a/b, a%b, parseInt(a/b), Math.floor(a/b));
+       
+       var c = 1;
+       var d= '1';
+       console.log(c==d, c!=d);
+       console.log(c===d, c!==d);
+
+
+       // 6 번 확인해보자
+       console.log(1+'1'); // '11'
+       console.log('1'+'1'); // '11'
+
+       console.log(5 - '2'); // 3
+       console.log(5 * '2'); // 10
+       console.log(5 / '2'); // 2.5
+       </script>
+
+       <script>
+        /*
+            최저 시급이 9,620원이다.
+            8시간까지는 최저 시급을 받고, 8시간 초과 근무는 최저시급의 1.5배를 받는다.
+            10시간 근무했을 때 일당은 얼마인가?
+        */
+
+        var a = 9620; // 한시간
+        var b = a * 1.5; // 초과근무
+
+        console.log((a * 8) + (b*2));
+
+
+        var payperhour = 9620;
+        var worktime = 10;
+        var regularPay = payperhour * worktime;
+        var extrapay = (worktime <= 8) ? 0 : payperhour * 0.5 * (worktime-8);
+        alert(regularPay + extrapay); // 경고창으로 띄어봄. 콘솔로 해도됨
+        
+        
+       </script>
+    
+</body>
+</html>
