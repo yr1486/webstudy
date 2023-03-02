@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- id 는 자바스크립트, css 클래스용 으로 분리해서 사용하면 수월하다.  -->
+
+    <!-- <div id="box1">이 자리가 콘텐트 자리/div> -->
+    
+    
+    <div id="box1"></div>
+
+    <script>
+        // 1. 내부 텍스트 보기 : textContent
+        // 태그 내부에 택스트만 볼때
+        // 태그의 택스트만 필요할때(기능없이 택스트만)
+        var box1 = document.getElementById('box1');
+                // 쿼리도 되는데 쿼리보다 겟엘러먼트가 더 성능이 ? 좋다.
+        box1.textContent='Hello World'; //자바로따지면 프로퍼티가 필드임.. 필드값
+    </script>
+
+
+
+
+    <div id="box2"><p>문단</p></div>
+    <script>
+        // textContent는 태그를 제외한 내부 텍스트만을 의미한다.
+        var box2 = document.getElementById('box2');
+        console.log(box2.textContent);
+
+
+        // 기존의 데이터가 덮어쓰기가 되는 방식 <a href="javascript:void:(0)"></a>
+    </script>
+
+
+    <div id="box3"></div>
+    <script>
+        // 내부 HTML 요소 : innerHTML
+        // 내부HTML은 태그를 이해해서 넣어주는데
+        // textcontent 는 그냥 텍스트로 때려넣어서 태그 적용이 안된다.
+        var box3 = document.getElementById('box3') // 알아내자
+        box3.innerHTML = '<p>문단</p>';   // 집어넣어보자.
+    </script>
+
+    <!--
+        지금 위에 box2와 box3는 웹브라우저 엘러먼츠창에서와 같이 변화가 없어
+        실제로도 변화가 없어. 변화가 없는게 핵심이고.
+        사용 용도에 따라서 달리 쓰는거임
+        내가 단지 텍스트로 읽어 갈꺼면 textContent 를 사용해도 되고
+        내가 태그를 읽히게 하고 싶으면 innerHTML 를 써야하는거.
+     -->
+
+    <ul id="season"></ul>
+
+    <script>
+        // 내부 요소 추가를 위해서 + 연산자를 사용 할 수 있다.
+        // 기존 요소에 추가 작업은 = 이 아니라 += 해서 넣어줘야함.
+        var season = document.getElementById('season') // 돔요소를 겟아이디로 알아내고
+        season.innerHTML += '<li>봄</li>'; //이제 내용을 넣으면 됨
+        season.innerHTML += '<li>여름</li>';
+        season.innerHTML += '<li>가을</li>';
+        season.innerHTML += '<li>겨울</li>';
+        // 이너를 써줘서 태그를 이해하는 구조임!!!
+        // 봄,여름,가을,겨울이 배열에 들어가있다고 생각하믄.. for문을 돌릴 수 있음
+        
+    </script>
+
+
+        <!-- 예를 들어, 댓글창에서.
+            여러댓글이 써져 있는데. 거기에 내가 댓글을 쓰게 되면
+            기존에 댓글에 += 해서 내가 쓴 댓글만 추가하면 되잖아
+            그 방법을 자바 스크립트로 하는건데..이런걸 할때 택스트컨텐트랑 이너HTML 같은걸 사용해서 하는 거임
+            자바스크립트를 잘하고 잘써야 웹성능이 좋은거임
+
+        -->
+
+        <div id="box4">Hello World</div>
+
+        <script>
+            /*
+            CSS 적용하기
+            1. style 속성을 이용한다.
+            2. inline 방식으로 CSS가 적용된다. (javascript를 이용한  css는 우선순위)
+            3. css 속성 적용 방식
+                1) 마침표 : css 속성에서 하이픈(-)을 제거한 뒤 camel case 방식의 이름으로 바꿔서 사용한다.
+                2) 대괄호 : css 속성을 문자열 형식으로 그대로. 사용한다.
+            4. 작성 예시
+                1) 마침표 : dom.style.fontSize = '12px';
+                2) 대괄호 : dom.style['font-size'] = '12px';
+
+            */
+
+            var box4 = document.getElementById('box4');
+            box4.style.color = '#efefef';
+            box4.style['color'] = '030303'; // 0에가까울수록진하다.
+        </script>
+
+
+
+<!-- id 와 class 는 attribute 라고 한다. 
+    => 태그안에 작성되어 있는 속성은!! 애트리뷰트!! -->
+
+<!-- 객체가 가지는 속성이 따로 있음. 이걸 프로퍼티라고 함. -->
+    <!-- 프로퍼티는 태그에 작성된게 아니라. 객체로 흘러들어갔을때 프로퍼티라고 한다.. -->
+    
+    
+    <!-- 애트리뷰트와 프로퍼티의 이름이 같을 경우가 있다.
+
+    그래서 애트리뷰트와 프로퍼티라고 다르게 이름을 불러줘야하는 거고
+    그걸 배울거임 -->
+    
+    <!-- 애트리뷰트와 프로퍼티의 차이 알기 -->
+    
+    
+    <div id="box5" class="box5">Hello World</div>
+    <script>
+        /*
+            attribute
+            1. 태그의 명시된 속성이다. attribute 불러오기
+            2. get/set 메소드를 이용해서 attribute를 사용한다.
+            3. 메소드
+                1) 속성 알아내기 : getAttribute('속성명')
+                2) 속성 변경하기 : setAttribute('속셩명', '값')
+
+        */
+
+        // 속성 알아내기 = 속성 확인하기
+        var box5 = document.getElementById('box5');
+
+        console.log(box5.getAttribute('id'));
+        console.log(box5.getAttribute('class'));
+
+        // 속성 변경하기
+        box5.setAttribute('id', 'box5-1');
+        box5.setAttribute('class', box5-1);
+    </script>
+
+    <div id="box6" class="box6">Hello World</div>
+    <script>
+        /*
+            property
+            1. 객체가 가지는 속성이다.
+            2. 어떤식으로 사용하냐면
+                마침표(.)를 이용해서 property 를 사용한다.
+                ex) box1.textContent, box4.style  등 점찍고 사용한 속성은 프로퍼티로 보면 된다.
+                    프로퍼티는 너무 많아서 외울 수 없어 아래 방법으로 확인하면서 보면 됨.
+            3. property 확인하는 방법
+                개발자 도구 -> Elements 탭 -> properties 탭에서 확인한다
+        */
+       var box6 = document.getElementById('box6');
+       console.log(box6.id);
+       console.log(box6.className);
+
+       box6.id = 'box6-1';
+       box6.className = 'box6-1';
+
+    </script>
+
+    <div>
+        <input id="inp" type="text" value="Hello World" readonly="readonly">
+        <!-- 애트리와 프로퍼티 다른걸 이해해야함 -->
+    </div>
+    <!-- id를 줘야 불러서 쓰니. 만들어줘야해. 그 후 리드온리 해제해야해
+        애트리로 할건지 프로퍼티로 할건지 -->
+
+    <script>
+        var inp = document.getElementById('inp');
+        // 방법 1 : inp.removeAttribute('readonly');
+        // 방법 2 :
+        inp.readOnly = false;
+    </script>
+
+        <!--나중에 배울거
+        사용자의 동작을 이벤트라고 한다. -->
+    
+            
+
+
+
+</body>
+</html>
