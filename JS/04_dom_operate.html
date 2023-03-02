@@ -178,7 +178,28 @@
         <!--나중에 배울거
         사용자의 동작을 이벤트라고 한다. -->
     
-            
+        <style>
+            .red_text {
+                color: red;
+            }
+            .blue_text {
+                color: blue;
+            }
+        </style>
+    <div id="box7" class="red_text">Hello World</div>
+
+    <script>
+        // 파란색으로 바꾸기
+
+        var box7 = document.getElementById('box7');
+        //box7.style.color = 'blue';
+
+        //box7.setAttribute('class', 'blue_text');
+
+        box7.className = 'blue_text';
+
+
+    </script>
 
 
 
