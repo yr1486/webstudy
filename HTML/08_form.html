@@ -256,10 +256,10 @@
             <p>
                 <div> radio에 직접 체크 외에 , 설정한 곳을 눌러도 클릭이 되게 하는 라벨</div>
                 <label for="male">
-                    <input type="radio" name="gender2" value="male" id="male">남
+                    <input type="radio" name="gender2" value="male" id="male2">남
                 </label>
                 <label for="female">
-                    <input type="radio" name="gender2" value="female" id="female">여
+                    <input type="radio" name="gender2" value="female" id="female2">여
                 </label>
             </p>
 
@@ -274,20 +274,23 @@
                              예: 네이버창에 검색어를 입력하고 '엔터'를 누르는 행위(또는 검색돋보기 클릭하는거, 
                                  어째뜬 입력한 값을 네이버 서버측에 보내는거)를 서브밋이라고 한다. 서브밋한다. 인풋만하면 서브밋이안됨, 폼도 같이써야함
 
-                (2) 서버 경로를 action 속성에 작성하고, 보내는 방법을 method 속성에 작성한다.
+                (2) 서버 경로를 form 태그에 action 속성을 주어 작성하고, 보내는 방법을 method 속성에 작성한다.
 
                 (3) 주요 속성
 
                     (1) action
+                        <form action="주소">
                         ① 입력된 값을 전송할 서버의 주소(경로)
                         ② 서버 내부 경로(URL Mapping)를 주로 작성
 
                     (2) method
                         ① GET 방식
+                            <form method="get">
                             - 디폴트(생략 가능)
                             - 전송할 데이터가 주소(URL)에 파라미터로 노출
                             - 빠른 처리, 보안 취약
                         ② POST 방식
+                            <form method="post">
                             - 전송할 데이터가 본문에 포함되므로 노출되지 않음
                             - 느린 처리, 보안 우수
                         ③
@@ -303,7 +306,7 @@
     -->
     <p>
         <form action="01_overview.html">
-            <label for="name">
+            <label for="name"><!--라벨이 쓰일 곳이 많음.-->
                 이름 <input type="text" id="name">
             </label>
             <br>
@@ -324,17 +327,15 @@
         <fieldset>
             <legend>성별</legend>
             <label for="male">
-                <input type="radio" name="gender" value="male" id="male">남
+                <input type="radio" name="gender3" value="male" id="male3">남
             </label>
             <label for="male">
-                <input type="radio" name="gender" value="female" id="female">여
+                <input type="radio" name="gender3" value="female" id="female3">여
             </label>
         </fieldset>
     </p>
 
-
-
-
+ 
             
 
 </body>
