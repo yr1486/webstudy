@@ -19,7 +19,7 @@
         1) document.getElementById('아이디적어주기')- 중복값                                   : 변수로 처리 (문서객체가 하나만 있으니까)
         2) document.getElementsByClass('클래스')    - 얘는 여러개 되니까  s 복수형으로 사용    : 배열로 처리
         3) document.getElementsTagName('태그')      - div 가져오라하면 너무 많으니까 잘 안쓰임 : 배열
-        4) document.querySelector('선택자')           - 셀렉터 이용한 방법                       : 배열
+        4) document.querySelector('선택자')           - 셀렉터 이용한 방법                       : 변수
         5) document.querySelectorAll('선택자')                                                   : 배열
         (하나의 요소밖에 없더라도 배열에 집어넣어서 사용한다)
         */
@@ -53,43 +53,42 @@
         <div id="box2" class="box2"></div>
         <script>
 
-            //1. 아이디
-            var box2 = document.getElementById('box2');
-            console.log('box2');
+        // 1. 아이디
+        var box2 = document.getElementById('box2');
+        console.log(box2);
 
+        // 2. 클래스
+        var box2 = document.getElementsByClassName('box2');
+        console.log(box2);
 
-            //2. 클래스
-            var box2 = document.getElementsByClassName('box2');
-            console.log(box2);
-            
-            // 3. 태그
-            var div = document.getElementsByTagName('div');
-            console.log(div);
+        // 3. 태그
+        var div = document.getElementsByTagName('div');
+        console.log(div);
 
             //콘솔창에 [] 묶여 있는데 이거 json .. 배열이라는 뜻   
 
             
-            // 4. 선택자(querySelector)
-            var box2 = document.querySelector('#box2'); // id 무조건 한개, 여러개있더라도 그중 첫번쨰꺼만.
-            console.log(box2);
+        // 4. 선택자(querySelector)
+        var box2 = document.querySelector('#box2'); // id 무조건 한개, 여러개있더라도 그중 첫번쨰꺼만.
+        console.log(box2);
 
-            var box2 = document.querySelector('.box2'); // class
-            console.log(box2);
+        var box2 = document.querySelector('.box2'); // class
+        console.log(box2);
 
-            var div = document.querySelector('div'); // 태그
-            console.log(div);
+        var div = document.querySelector('div'); // 태그
+        console.log(div);
 
 
-            // 5. 선택자(querySelectorAll)
-            var box2 = document.querySelectorAll('#box2');
-            console.log(box2);
-            // 콘솔 열어보면., 노드리스트. 인덱스:0이라 나오고, length의 길이 1로 표시되어 있음.
+        // 5. 선택자(querySelectorAll)
+        var box2 = document.querySelectorAll('#box2');
+        console.log(box2);
+        // 콘솔 열어보면., 노드리스트. 인덱스:0이라 나오고, length의 길이 1로 표시되어 있음.
 
-            var box2 = document.querySelectorAll('.box2');
-            console.log(box2);
+        var box2 = document.querySelectorAll('.box2');
+        console.log(box2);
 
-            var div = document.querySelectorAll('div');
-            console.log(div);
+        var div = document.querySelectorAll('div');
+        console.log(div);
 
         </script>
 

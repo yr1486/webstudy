@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- 구성요소가 위(=태그가 위), 스크립트가 아래 있어야 함. -->
+    <div id="box"></div>
+    <script>
+        document.getElementById('box')
+        // 자바처럼 얘는 객체임 객체니까 필드도 올수 있고 등등
+    </script>
+
+    <div>
+        <div>국어점수 <span id="kor">81</span>점</div>                                
+        <div>영어점수 <span id="eng">93</span>점</div>
+        <div>수학점수 <span id="math">100</span>점</div>
+        <!-- 80점만 따로 뺴서 쓸 수 있게 span으로 감쌌음. -->
+    </div>
+    <div>
+    <!-- 4. 연습문제 : 평균과 학점을 출력해보자 -->
+        <div>평균점수 <span id="average"></span>점</div>
+        <div>학점 <span id="grade"></span>학점</div>
+         
+    </div>
+    
+    <script>
+        // 1. 연습문제 : 80점을 뺴서 콘솔에 찍어보기
+        var kor = Number(document.getElementById('kor').textContent);
+        // 여기까지가 <span id="kor">80</span> 이거고 이게 객체가 된거.
+        console.log(kor, typeof kor);
+        // 객체가된 내부 택스트는. 내부택스트를 가지고 오려면. 프로퍼티를 써야함. 텍스트만읽어오면 텍스트컨탠트, 태그까지읽어온다 이너HTML
+        // 소수점인지 정수인지 모르면 넘버 쓰기.
+    
+
+        var eng = Number(document.getElementById('eng').textContent);
+        var math = Number(document.getElementById('math').textContent);
+        console.log(eng, typeof eng);
+        console.log(math, typeof math);
+
+
+        // 2. 연습문제 : 평균 내보기
+        var average = (kor + eng + math) / 3;
+        // 자바였으면 3을 3.0으로 바꿨을텐데 여기는 소수점이 생기면 소수점도 반환됨.
+        
+        // 3. if 문 쓰기.
+        var grade;
+        // 변수선언 안해도 되지만, 하자. 수업에서는 할거임
+
+        /*
+        if(average >= 90) {
+            grade = 'A';
+        }
+        else if(average >=80) {
+            grade = 'B';
+        }
+        else if(average >=70) {
+            grade = 'C';
+        }
+        else if(average >=60) {
+            grade = 'D';
+        }
+        else {
+            grade = 'F';
+        }
+        */
+        switch (true) {
+        case average >= 90: grade = 'A'; break;
+        case average >= 80: grade = 'B'; break;
+        case average >= 70: grade = 'C'; break;
+        case average >= 60: grade = 'D'; break;
+        default: grade = 'F';
+
+        }
+        // switch-case는 정수와문자열만 가능함, 불린, 실수 안됨
+
+        // 4번을 만들었으면 아래 출력이 가능함
+        document.getElementById('average').textContent =average;
+        document.getElementById('grade').textContent =grade;
+
+
+
+    </script>
+
+    
+</body>
+</html>

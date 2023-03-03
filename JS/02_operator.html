@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
 
     <script>
@@ -50,33 +52,33 @@
 
             6. 문자열 연산자 , 자바와 조금 다름
                 1) 문자열 연결 : +
-                2) + 이외의 산술 연산자(-,*,/ 등)는 연산에 포함된 문자열을
+                2) + 이외의, 산술 연산자(-,*,/ 등)는 연산에 포함된 문자열을
                     숫자로 바꿔서 산술 연산으로 처리한다.
 
         */
 
-       
-       var a = 10;
-       var b = 3;
-       console.log(a ** 3);
-       console.log(a/b, a%b, parseInt(a/b), Math.floor(a/b));
-       
-       var c = 1;
-       var d= '1';
-       console.log(c==d, c!=d);
-       console.log(c===d, c!==d);
+
+        var a = 10;
+        var b = 3;
+        console.log(a ** 3);
+        console.log(a / b, a % b, parseInt(a / b), Math.floor(a / b));
+
+        var c = 1;
+        var d = '1';
+        console.log(c == d, c != d);
+        console.log(c === d, c !== d);
 
 
-       // 6 번 확인해보자
-       console.log(1+'1'); // '11'
-       console.log('1'+'1'); // '11'
+        // 6 번 확인해보자
+        console.log(1 + '1'); // '11'
+        console.log('1' + '1'); // '11'
 
-       console.log(5 - '2'); // 3
-       console.log(5 * '2'); // 10
-       console.log(5 / '2'); // 2.5
-       </script>
+        console.log(5 - '2'); // 3
+        console.log(5 * '2'); // 10
+        console.log(5 / '2'); // 2.5
+    </script>
 
-       <script>
+    <script>
         /*
             최저 시급이 9,620원이다.
             8시간까지는 최저 시급을 받고, 8시간 초과 근무는 최저시급의 1.5배를 받는다.
@@ -86,17 +88,21 @@
         var a = 9620; // 한시간
         var b = a * 1.5; // 초과근무
 
-        console.log((a * 8) + (b*2));
+        console.log((a * 8) + (b * 2));
 
 
         var payperhour = 9620;
         var worktime = 10;
         var regularPay = payperhour * worktime;
-        var extrapay = (worktime <= 8) ? 0 : payperhour * 0.5 * (worktime-8);
-        alert(regularPay + extrapay); // 경고창으로 띄어봄. 콘솔로 해도됨
-        
-        
-       </script>
-    
+        var extrapay = (worktime <= 8) ? 0 : payperhour * 0.5 * (worktime - 8);
+        //alert(regularPay + extrapay); // 경고창으로 띄어봄. 콘솔로 해도됨
+        console.log(regularPay + extrapay);
+        console.log(아라)
+
+
+
+    </script>
+
 </body>
+
 </html>
