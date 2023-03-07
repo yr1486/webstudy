@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        /* 복습
+
+        // 호이스팅 순서 알아보기.
+        // 특징 : 똑같은게 또 나오면 덮어쓰기 된다.
+
+        //3
+        fnGetList();
+        
+        //1
+        function fnGetList() { //선언 함수 (호이스팅)
+            alert('하하하');
+        }
+        //2
+        function fnGetList() { //선언 함수 (호이스팅)
+            alert('호호호');
+        }
+        //4
+        fnGetList();
+        */
+
+    </script>
+
+    <script>
+
+        /*
+        // 익명함수 : 이름이 없기 때문에 변수명으로 호출한다.
+        // 특징 : 호이스팅이 안된다. 생성하고 만드는 순서를 지켜야 함.
+
+        var f =function() {
+            alert('하하하');
+        }
+
+        f();
+
+        */
+    </script>
+
+    <script>
+        /*
+        // 익명함수 : 화살표
+        var ff = () => {
+            alert('하하하');
+        }
+
+        ff();
+
+        */
+    </script>
+
+
+    <script>
+
+        /*
+        // 콜백 함수
+        function fnGetList(data) { // 매개변수 선언이 안붙음. 조심하기.
+            data();
+        }
+
+        // 어느 값이든 전달 할 수 있다.
+        
+        fnGetList(140);
+        fnGetList('문자열 와도되고');
+
+        // 함수도 부를 수 있어.
+        fnGetList(function() {alert('하하하');});
+
+        // 어떤 함수를 다른 함수에 전달할 수 있다. function() {alert('하하하');} 이 부분이 위에 data로 전달 되고, data(); 로 호출한다!!
+        */
+    </script>
+    <!-- 복습 끝 -->
+
+
+    <script>
+        
+        /*
+            1. setTimeout
+                1) 한 번만 동작하는 타이머 함수이다.
+                2) 동작
+                    var id = setTimeout(동작할함수, 동작할시간(밀리초));
+                3) 동작 취소
+                    clearTimeout(id);
+        */
+
+        /*
+        var timerId = setTimeout(function(){
+            console.log('5초 지났다.');
+        }, 5000);
+        clearTimeout(timerId);
+        */
+
+    </script>
+
+<script>
+
+    /*
+        2. setInterval
+            1) 반복해서 동작하는 타이머 함수이다.
+            2) 동작
+                var id = setInterval(동작할함수, 동작할시간(밀리초));
+            3) 동작 취소
+                clearInterval(id);
+    */
+
+    /*
+    var n = 0;
+    var timerId = setInterval(function(){
+        console.log(n++);
+    }, 1000);
+    clearInterval(timerId);
+    */
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- timer -->
+
+
+
+    <h1 id = "timer1"></h1>
+    <script>
+
+        /*
+        // 5초 타이머 구현하기 (5 > 4 > 3 > 2 > 1 > 땡)
+
+        var countDown = 5;
+        var timer1 = document.getElementById('timer1');
+        var timerId = setInterval(function() {
+            
+            if(countDown == 0) {
+                timer1.textContent = '땡';
+                clearInterval(timerId);
+            }
+            else {
+                timer1.textContent = countDown--;
+            }
+        },1000);
+        */
+    </script>
+
+
+    <script>
+
+        /*
+        function ex() {
+            console.log('하하하');
+            ex(); // 자기가 자기를 부르는 호출 방식 : 재귀 호출 (recursive call)
+        }
+        ex();
+
+        */
+
+        /*
+        // 재귀 호출 예시 : factorial 구하기 (5! = 5*4*3*2*1)
+        // 5! = 5 * 4!      fnFactorial(5) = 5 * fnFactorial(4)  
+        // 4! = 4 * 3!      fnFactorial(4) = 4 * fnFactorial(3)  
+        // 3! = 3 * 2!      fnFactorial(3) = 3 * fnFactorial(2)  
+        // 2! = 2 * 1!      fnFactorial(2) = 2 * fnFactorial(1)  
+        // 1! = 1           fnFactorial(1) = 1
+
+        -----------------------------------------------------------
+                           fnFactorial(n) = n * fnFactorial(n - 1);
+ 
+        */
+
+        function fnFactorial(n) {
+            if(n == 1) {
+                return 1;
+            }
+            else {
+                return n * fnFactorial(n-1);
+            }
+        }
+
+        console.log(fnFactorial(5));
+        
+    </script>
+
+    <h1 id = "timer2"></h1>
+    <script>
+        // 5초 타이머 구현하기
+        
+        var timer2 = document.getElementById('timer2');
+        function fnTimer(countDown){
+            setTimeout(function(){ 
+                if(countDown == 0) {
+                    timer2.textContent = '땡'; // 콘솔대신에 변수하나 만들어서 이렇게 사용한 거
+                    //return; // setTimeout에 전달된 익명함수 (콜백)을 종료한다. // 리턴이 없어도 됨.(else를 써서 그럼.)
+                }
+                else {
+                    timer2.textContent = countDown;
+                    fnTimer(countDown - 1);
+                }
+                
+            }, 1000);
+
+        }
+
+        fnTimer(5);
+    </script>
+    
+</body>
+</html>
