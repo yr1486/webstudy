@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1. <button>을 이용한 submit -->
+
+    <!-- 검색어를 입력하고 검색을하면 서버로 보내준다 : 서브밋 , 서브밋은 폼을 쓴다. 서브밋이란. 폼안에 데이터-->
+    <!-- 파라미터는 네임 속성 값이다. -->
+    <div>
+        <!-- 복습하자. id는 스크립트, 네임은 서버측에서 인식하기위한 거. 어차피 같은대상이니까 같은 값을 부여한것!! -->
+        <form id="frm_daum" action="https://search.daum.net/search" method="get">  <!-- 액션:물음표 앞까지.-->
+
+            <!-- 네임 = 속성 을 찾으려면 웹브라우저에서 f12누르고 엘러먼츠창에서 인풋태그 중 name찾고 값을 보기. -->
+            <input id="q" type="text" name="q">  <!-- 액션:물음표 앞까지.-->
+
+            <button type="submit"> 다음검색</button>  <!-- 버튼의 타입은 생략할 수 있다. 버튼만 적어놔도 서브밋인거 알아야해.-->
+           <!-- <button>다음검색</button> 생략한 모습-->
+
+        </form>
+    </div>
+
+    <script>
+        // 서브밋을 수행하는건 버튼이아님!! 폼임!!!!!
+        
+        // 이벤트 타입 : submit
+        // 이벤트 대상 : <form></form>
+        
+        // submit 이벤트 등록
+        // 1. 고전 이벤트 : 문서객체.onsubmit = function(){};
+        // 2. 표준 이벤트 : 문서객체.onsubmit = addEventListener('submit', function(){});
+        // 문서 객체는 form !!
+
+        // 이벤트 대상
+        var frmDaum = document.getElementById('frm_daum');
+
+        // 검색어 입력란(<input id="q"> 이거 자체임)
+        var q = document.getElementById('q');
+
+        // 이벤트 등록 (고전이벤트로 사용해봄)
+        frmDaum.onsubmit = function(event) {
+            if(q.value == '') {
+            // 밸류는 실제 입력된 사용자가 입력한 실제 데이터를 의미한다!!!
+                alert('검색어가 입력되지 않았습니다');
+                q.focus(); // 검색어 입력란에 자동으로 커서를 보냄
+                // submit 방지 코드
+                event.preventDefault(); // submit 방지함.
+                return;                 // 이벤트 종료(이벤트 리스너의 종료)!! 함수 끝낼때 리턴한거임. 더이상 아무일도 안하겠다. 
+
+            }            
+        }
+
+        </script>
+
+    <!-- 2. <input type="submit">을 이용한 submit -->
+    <div>
+        <form id="frm_google" action="https://www.google.co.kr/search" method="get">
+            <input id="q2" type="text" name="q2">
+            <input type="submit" value="구글검색">
+
+        </form>
+
+    </div>
+
+    <script>
+        // 검색어 입력란
+        var q2 = document.getElementById('q2'); 
+        // 이벤트 대상
+        var frmGoogle = document.getElementById('frm_google');
+        // 이벤트 등록 (표준 이벤트)
+        frmGoogle.addEventListener('submit', function(event){
+            if(q2.value == '') {
+                event.preventDefault();
+                return;
+            }
+        }); 
+
+
+    </script>
+
+    <!-- 3. <input type="button">을 이용한 submit -->
+    <div>
+        <form id="frm_naver" action="https://search.naver.com/search.naver" method="get">
+            <input id="query" type="text" name="query">
+            <input type="button" value="네이버 검색" id="btn_naver">
+        </form>
+    </div>
+
+    <script>
+
+        // 검색어 입력란
+        var query = document.getElementById('query');
+
+        // 검색 폼
+        var formNaver = document.getElementById('frm_naver');
+
+        // 검색 버튼
+        var btnNaver = document.getElementById('btn_naver');
+
+        // click 이벤트 등록 (고전이벤트)
+        btnNaver.onclick = function(event){ // 선언
+            //alert('하하하');
+
+            // 입력이 없으면 방지
+            if(query.value == '') {
+                //event.preventDefault(); // 버튼을 클릭하면 <input type="button" 원래 얘는 아무 일이 없어.
+                                         // 원래 하는 일이 없기 때문에 event.preventDefault()를 걸어주면 의미 없는 코드가 된다.
+                return;                  // 하지만, 리턴은 이벤트 리스너(함수)를 종료시키는 역할이기 때문에 submit을 방지할 수 있음. 
+                                         // 리턴 이후에 나타난 submit 실행 코드의 실행을 막을 수 있다. 밑에 서브밋.함수 실행 안되니까.                        
+                
+            }
+            formNaver.submit();         // 리턴이 막을 수 있음
+                                        //  잘모르겠으면 event.preventDefault() 와 return 같이 쓰기.
+        }
+
+    </script>
+    
+</body>
+</html>
