@@ -118,7 +118,34 @@
         }
     </script>
 
+<!-- 4. 체크 박스 선택하기 -->
 
+    <style>
+        label {
+            display: block;
+        }
+        </style>
+
+        <div>
+            <label for="chk_all">
+                <input type="checkbox" id="chk_all">
+                모두 동의합니다.
+            </label>
+
+            <label for="chk_service">
+                <input type ="checkbox" id="chk_service" class="chk_one">
+                이용약관에 동의합니다.
+            </label>
+            <label for = "chk_privacy">
+                <input type="checkbox" id="chk_privacy" class="chk_one">
+                개인정보 동의합니다.
+            </label>
+            <label for="chk_promotion">
+                <input type="checkbox" id="chk_promotion" class="chk_one">
+                프로모션 동의합니다.
+            </label>
+        </div>
+    </style>
 
 
 <script>
@@ -144,11 +171,6 @@
 
         }
     }
-
-
-    
-    
-    
     
     </script>
 
@@ -159,11 +181,11 @@
 
 
 
-
+<!-- 연습 -->
 
 
     <div>
-        <form>
+        <form id="frm_ex">
             <input id="email" type="id" placeholder="이메일">
             <button>가입</button>
         </form>
@@ -189,32 +211,20 @@
 
 
 
+    <script>
 
-    <style>
-        label {
-            display: block;
+    for(let i =0; i < chkOneList.length; i++) {
+        chkOneList[i].onclick = function() {
+            let chkCount = 0;
+            for(let j = 0; j < chkOneList.length; j++) {
+                chkCount += chkOneList[j].checked;
+            }
+            chkAl.checked = (chkOneList.length == chkCount);
+
         }
-        </style>
+    }
 
-    <div>
-        <label for="chk_all">
-            <input type="checkbox" id="chk_all">
-            모두 동의합니다.
-        </label>
-
-        <label for="chk_service">
-            <input type ="checkbox" id="chk_service" class="chk_one">
-            이용약관에 동의합니다.
-        </label>
-        <label for = "chk_privacy">
-            <input type="checkbox" id="chk_privacy" class="chk_one">
-            개인정보 동의합니다.
-        </label>
-        <label for="chk_promotion">
-            <input type="checkbox" id="chk_promotion" class="chk_one">
-            프로모션 동의합니다.
-        </label>
-    </div>
+    </script>
     
 </body>
 </html>

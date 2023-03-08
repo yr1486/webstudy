@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+    /*
+        비동기 처리 방식
+        1. 데이터를 주고 받는 통신(송신, 수신) 과정이 순서 없이 처리되는 방식이다.
+        2. 응답이 없어도 계속 요청할 수 있는 방식이다. 기다릴 필요 없어서 동기 방식보다 빠른.통식 방법.
+        3. 페이지를 구성하는 일부 데이터만 요청하고 응답 받을 수 있다. => 블로그 본문 글쓰고 있는데 밑에 댓글창에 댓글입력하면 댓글입력이완성되고 블로그본문은 변화가 없는 그런 구조
+        4. 이 때 JavaScript XMLHttpRequest 객체가 사용된다.
+     */
+
+    </script>
+
+    <!-- 요청과 응답 관련해서 실습할떄는 서버가 아닌 파일에 저장해서 파일로 불러오고 이렇게 할거임. 파일로 연습. -->
+
+        <div>
+            <input type="button" id="btn_req_text" value="텍스트요청">
+            <div id="res_text"></div>
+        </div>
+        <script>
+
+            document.getElementById('btn_req_text').addEventListener('click', () => {
+
+                // 1. XMLHttpRequest 객체 생성
+                var xhr = new XMLHttpRequest();
+
+                /*
+                    2. open - 요청 정보 생성
+                        1) 형식 : open(HTTP Method, URL, Sync/Async)
+                        2) HTTP Method
+                            (1) GET
+                            (2) POST
+                        3) URL : 요청하는 서버 경로
+                        4) Sync/Async
+                            (1) Sync(동기)    : false
+                            (2) Async(비동기) : true
+                */
+                xhr.open('get', 'data.txt', true)
+
+                /*   3. send - 요청하기 */
+                xhr.send();
+
+                /* 
+                    4. 응답 처리하기
+                        1) 응답되었는지 확인하기 위한 readystatechange 이벤트가 사용된다.
+                        2) 응답 속성
+                            (1) readyState - 통신 상태 확인
+                                ㄱ. 0 : OPENED
+                                ㄴ. 1 : UNSEND
+                                ㄷ. 2 : HEADERS_RECEIVE
+                                ㄹ. 3 : LOADING
+                                ㅁ. 4 : DONE (이것만 사용하면 된다.)
+            
+                            (2) status - 응답 코드
+                                ㄱ. 200 : 응답 성공
+                                ㄴ. 4xx : 요청 실패 (사용자 잘못)
+                                ㄷ. 5xx : 응답 실패 (서버 잘못)
+                            
+                            (3) 응답 데이터의 형식
+                                ㄱ. 텍스트  : responseText
+                                ㄴ. XML     : responseXML
+                                ㄷ. JSON    : JSON.parse(responseText) // 텍스트로 본다. 객체로 바꾸기위해 제이슨 파스 사용.
+            
+                */
+
+                // readystatechange 이벤트 등록
+                xhr.addEventListener('readystatechange', () => {
+
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        document.getElementById('res_text').textContent = xhr.responseText;
+                    }
+                });
+            });
+
+
+        </script>
+
+        <div>
+            <input type="button" id="btn_req_xml1" value="제품정보요청">
+            <div id="res_xml1"></div>
+        </div>
+        <script>
+            document.getElementById('btn_req_xml1').addEventListener('click', () => {
+                var xhr = new XMLHttpRequest();
+                xhr.open('get', 'product1.xml', true);
+                xhr.send();
+                xhr.addEventListener('readystatechange', () => {
+                    if(xhr.readyState == 4 && xhr.status == 200) {
+                        // XML 응답 처리 속성은 responseXML이다.
+                        var data = xhr.responseXML;
+                        // <product> 태그들을(총3개) 가져온다.
+                        var productList = data.getElementsByTagName('product');
+                        // 할때마다 콘솔 찍어서 확인해보기. 확인절차. 콘솔 . console.log(productList);
+                        var productList = data.getElementsByTagName('product');
+                        // 가져온 제품 정보들을 화면에 나태낼 <table> 태그로 만든다.
+                        var str = '<table border="1"';
+                        str += '<thead><tr><td>모델</td><td>제조사</td><td>가격</td><tr></thead>';
+                        str += '<tbody>';
+                        for(let i = 0; i < productList.length; i++) {
+                            str += '<tr>';
+                            str += '<td>' + productList[i].getElementsByTagName('model')[0].textContent + '</td>';
+                            str += '<td>' + productList[i].getElementsByTagName('maker')[0].textContent + '</td>';
+                            str += '<td>' + productList[i].getElementsByTagName('price')[0].textContent + '</td>';
+                            str += '</tr>';
+
+                        }
+                        str += '</tbody></table>';
+
+                        // <table> 태그를 화면에 나타낸다.
+                        document.getElementById('res_xml1').innerHTML = str;
+                        
+                    }
+                });
+            });
+            // xml은 태그를 가져오는? 방식.
+        </script>
+        
+
+
+
+
+
+
+        <div>
+            <input type="button" id="btn_req_xml2" value="제품정보요청2">
+            <div id="res_xml2"></div>
+        </div>
+        <script>
+            document.getElementById('btn_req_xml2').addEventListener('click', () => {
+                var xhr = new XMLHttpRequest   // XMLHttpRequest 얘가 서버나 데이터를 제공하는 곳에서 비동기로 데이터를 받아올 수 있는 객체여서 쓰인거임. 잊지말기.
+                xhr.open('get', 'product2.xml', true);
+                xhr.send();
+                xhr.addEventListener('readystatechange', () => {
+                    if(xhr.readyState == 4 && xhr.status == 200) {
+                        var data = xhr.responseXML; // 전체
+                        var productList = data.getElementsByTagName('product'); // 이제프러덕트 테그만 가져오기.
+                        console.log(productList);
+                    }
+                })
+            
+            });
+        </script>
+        
+        
+        </body>
+        
+        </html>
