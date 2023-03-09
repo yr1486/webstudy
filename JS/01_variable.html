@@ -74,6 +74,7 @@
                     (3) 같은 변수명으로 다시 선언할 수 없다.
                     (4) 변수의 초기화를 생략할 수 있다. (메모리에 변수가 안 만들어진 상태)
                     (5) 저장된 값을 변경할 수 있다.
+                    ---- for문에서 많이 쓰임.
                 
 
                 3) const(ES6 표준) -> 자바에서는 final상수라 쓰임.
@@ -99,13 +100,17 @@
     <script>
         /*
             javascript 출력 방식
+
             1. 경고창
                 alert(출력메세지)
+
             2. 화면 출력
                 document.write(출력메세지)
+
             3. 콘솔 출력
                 브라우저 화면에(F12) 누르면 나오는 콘솔창을 말함(개발자도구 - console 탭)
                 console.log(출력메세지)
+
                 3가지 정도 있음
         */
 
@@ -119,6 +124,7 @@
     
     <script>
         // 변수 선언 후 초기화가 없으면 undefined 상태
+        // null이 아님.
         var a;
         console.log(a);
 
@@ -130,7 +136,7 @@
         // 콤마가지고 구분짓고, 콘솔창에는 콤마대신 공백으로 보여줌
 
         // 값이 변하면 타입이 변하는 동적 타입이다.
-        a = 'Hello World';
+        a = 'Hello_World';
         console.log(a, typeof a);
 
         // 변수 선언은 생략 가능
@@ -159,8 +165,9 @@
         var n4 = parseFloat(b);
         console.log(b, n3, n4);
 
+        
         // 2. 숫자 -> 문자열로
-        var c =200;
+        var c = 200;
         var str1 = String(c);
         var str2 = c + '';  // 자바랑같음 . 빈문자열 더해줘도 됨
         console.log(c, str1, str2);

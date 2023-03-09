@@ -21,6 +21,7 @@
     <p>
         <!-- 디폴트로 type="text" 적용 -->
         <div>input의 디폴트</div>
+
         <input>
         <input>
         <br>
@@ -28,6 +29,7 @@
         
         <!-- input의 속성 종류 -->
         <div>input의 사이즈와 글자수를 각각 필요 시 조절할 수 있음</div>
+
         <input type="text" maxlength="4"><br>
         <input type="text" size="5"><br>
         <input type="text" size="10" maxlength="4"><br>
@@ -36,11 +38,15 @@
 
         <!-- placeholder 속성 : 입력창에 안내메세지. -->
         <div>입력창 안내메세지, 입력하면 사라지는 메세지</div>
+
         <input type="text" placeholder="검색어를 입력하세요">
+        <input type="button" value="검색">
+        <!-- 아무 기능없는 버튼하나 만들어짐. 모양새만 갖춘. -->
         <br><br>
         
         <!-- required 속성 : 필수 입력 -->
         <div>입력창에 커서를 대면 문구가 뜸</div>
+
         <input type="text" required="required">
         <!-- ="required" 생략할 수 있다!! 수업에서는 생략할거임.-->
         <br><br><hr>    
@@ -71,12 +77,14 @@
     <!-- 2. 기타 <input> 태그 -->
     <p>
         <!-- type="password" : 비밀번호 입력용 -->
-        <div>   비밀번호 입력</div>
+        <div>비밀번호 입력</div>
+
         <input type="password" placeholder="비밀번호">
         <br><br>
 
         <!-- type="number" : 숫자 입력용 -->
-        <div>숫자만 입력 가능</div>
+        <div>설정한 숫자 길이만큼 입력 가능</div>
+
         <input type="number" min="1" max="12">
         <!-- number 최대값, 최소값을 지정할 수 있음 -->
         <br><br>
@@ -255,10 +263,10 @@
 
             <p>
                 <div> radio에 직접 체크 외에 , 설정한 곳을 눌러도 클릭이 되게 하는 라벨</div>
-                <label for="male">
+                <label for="male2">
                     <input type="radio" name="gender2" value="male" id="male2">남
                 </label>
-                <label for="female">
+                <label for="female2">
                     <input type="radio" name="gender2" value="female" id="female2">여
                 </label>
             </p>

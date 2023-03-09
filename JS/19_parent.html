@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 윈도우 객체는 load 라는 애를 가지고 있음.
+        // html 문서를 모두 읽은 뒤 동작한다.
+        // ==> 원래는 태그 다음에 스크립트가 와야 되는데. 
+        // 이 로드라는 애를 쓰면 이 순서 지키는 걸 신경 쓰지 않아도 됨. 단, 이거 쓰려면 윈도우 객체가 필요함
+        
+        // 고전이벤트와 표준이벤트 중에서 고전이벤트를 많이 쓰니 이걸 쓰도록 하자.
+        // window.onload = ()=>{
+            //};
+            //인데 윈도우가 생략 가능해서
+            // 
+            
+            // load 이벤트 : 문서 내의 모든 구성요소를 인식할 수 있다.
+            window.onload = () => {
+                // <input type="text" id="msg">에 입력한 메시지를 19_child.html 창으로 전송한다.
+
+                // 문서 객체
+                var btnSend = document.getElementById('btn_send');
+                var msg = document.getElementById('msg');
+
+                // 창 객체 (19_child.html) - 모든 함수에서 사용할 수 있도록 전역변수로 선언해둔다. var
+                var child = null; // 아직은 없음.
+
+                // 창 여는 함수
+                function fnOpenChild(url, target) {
+                    // 특징은 여기서 만드는걸로
+                    // 화면 중앙에 창 열기
+                    const width = 480;
+                    const height = 320;
+                    const left = (screen.width - width) / 2;
+                    const top = (screen.height - height) / 2;
+                    const feature = 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top;
+                    // 창이 열려 있다면 열지 않기 , 이거 안해주면 똑같은 창이 여러번 열림
+                    if(child == null || child.closed) {// 안열려있단뜻 || 열렸는데 닫혔음
+                        child = window.open(url, target, feature); // 창을 열어주는 함수
+                    } 
+
+                }
+                    // 현재 창 : 윈도우 객체라 할 수 있음
+                    // 창에 데이터 보내는 함수
+                    function fnSendToChild(){
+                        // child의 모든 구성요소를 인식할 수 있다.
+                        child.onload = ()=>{
+                            child.document.getElementById('receive_msg').textContent = msg.value;
+
+                        }
+                    }
+                    
+
+                // Click 이벤트
+                btnSend.addEventListener('click', ()=>{
+                    fnOpenChild('19_child.html', '');
+                    fnSendToChild();
+
+                });
+            }
+                
+            
+        
+        </script>
+        <div>
+            <label for="msg">보낼 메시지</label>
+            <input type="text" id="msg">
+            <input type="button" id="btn_send" value="메시지전송">
+        </div>
+
+        <div>
+            <div>받은 메시지</div>
+            <div id="receive_msg"></div>
+        </div>
+
+    
+</body>
+</html>

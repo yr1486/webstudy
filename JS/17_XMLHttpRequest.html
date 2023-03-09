@@ -13,8 +13,10 @@
         비동기 처리 방식
         1. 데이터를 주고 받는 통신(송신, 수신) 과정이 순서 없이 처리되는 방식이다.
         2. 응답이 없어도 계속 요청할 수 있는 방식이다. 기다릴 필요 없어서 동기 방식보다 빠른.통식 방법.
-        3. 페이지를 구성하는 일부 데이터만 요청하고 응답 받을 수 있다. => 블로그 본문 글쓰고 있는데 밑에 댓글창에 댓글입력하면 댓글입력이완성되고 블로그본문은 변화가 없는 그런 구조
+        3. 페이지를 구성하는 일부 데이터만 요청하고 응답 받을 수 있다. 
+        => 블로그 본문 글쓰고 있는데 이와 별도로 밑에 댓글창에 댓글입력하면 댓글입력이 완성되고 블로그 본문은 그대로 변화가 없는 그런 구조
         4. 이 때 JavaScript XMLHttpRequest 객체가 사용된다.
+        
      */
 
     </script>
@@ -142,10 +144,145 @@
                     if(xhr.readyState == 4 && xhr.status == 200) {
                         var data = xhr.responseXML; // 전체
                         var productList = data.getElementsByTagName('product'); // 이제프러덕트 테그만 가져오기.
-                        console.log(productList);
+                        //console.log(productList);
+                        var str = '<div>';
+                            for(let i=0; i<productList.length; i++) {
+                                str += '<ul>';
+                                str += '<li>' + productList[i].getAttribute('model') + '</li>';// product을 변수에 담아서 잘 안보일텐데 얘를 프러덕리스트에다가 담았어. 프러덕리스트가 프러덕이야.
+                                str += '<li>' + productList[i].getAttribute('maker') + '</li>'; 
+                                str += '<li>' + productList[i].getAttribute('price') + '</li>';
+                                    // 태그에 작성된 속성은 에트리뷰트라고 부른다. 04_dom_oprate 무조건 공부하기. => 겟에트리뷰트('모델')
+                                str += '</ul>';
+                            }
+                            str += '</div>';
+                                document.getElementById('res_xml2').innerHTML = str;
                     }
-                })
+                });
             
+            });
+        </script>
+
+
+
+        <div>
+            <input type="button" id="btn_req_json" value="제품정보요청3">
+            <div id="res_json" class="product_list"></div> 
+            <!-- 나중에 테이블같은거.. 입력할 상자를 미리 만든거  -->
+        </div>
+        <style>
+            .product_list {
+                display: flex;
+            }
+            .product {
+                border: 1px solid gray;
+            }
+        </style>
+        <script>
+            document.getElementById('btn_req_json').addEventListener('click', () => {
+                var xhr = new XMLHttpRequest();
+                xhr.open('get', 'product.json', true);
+                xhr.send();
+                xhr.addEventListener('readystatechange', ()=>{
+                    if(xhr.readyState == 4 && xhr.status == 200) { // 4는 done으로 대체해도 된다. 될 수 있다.
+                       // var data = xhr.responseText; // 받아들인 데이터에 =
+                        //console.log(data, typeof data);
+                        var data = JSON.parse(xhr.responseText);
+                        //console.log(obj, typeof obj); // 제이슨데이터를 읽을때 통째로 읽어들이기떄문에. 이걸 써가지고 뽑아낸다고 생각하면 됨.
+                        var str = '';
+                        for(let i=0; i < data.length; i++) {
+                            str += '<div class="product">';
+                            str += '<span>' + data[i].model + '</span>'; // 마침표해도되고 [] 해도됨
+                            str += '<span>' + data[i].maker + '</span>'; // 마침표해도되고 [] 해도됨
+                            str += '<span>' + data[i].price + '</span>'; // 마침표해도되고 [] 해도됨
+                            str += '</div>';
+                        }
+
+                    }
+                    document.getElementById('res_json').innerHTML = str;
+                    //객체의 프로퍼티(속성) 사용법 ===> 에트리뷰트, 객체의 프로퍼티 포문 돌리는 방법
+                });
+            });
+        </script>
+
+            <!-- 연습1. sfc_web_map.xml 읽어서 화면에 표시하기 -->
+        <div>
+            <input type="button" id="btn_get_weather" value="날씨가져오기">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <td>지역명</td>
+                        <td>날씨</td>
+                        <td>온도</td>
+                    </tr>
+                </thead>
+                <tbody id="weather_body"></tbody>
+            </table>
+        </div>
+
+        <script>
+            document.getElementById('btn_get_weather').addEventListener('click', () => {
+                var xhr = new XMLHttpRequest();
+                xhr.open('get', 'sfc_web_map.xml', true);
+                xhr.send();
+                xhr.addEventListener('readystatechange', ()=> {
+                    if(xhr.readysState == 4 && xhr.status == 200) {
+                        var data = xhr.responseXML;
+                        var localList = data.getElementsByTagName('local');
+                        var str = '';
+                        for(let i = 0; i<localList.length; i++) {
+                            str += '<tr>';
+                            str += '<td>' + localList[i].textContent + '</td>';
+                            str += '<td>' + localList[i].getAttribute('desc') + '</td>';
+                            str += '<td>' + localList[i].getAttribute('ta') + '</td>';
+                            str += '</tr>';
+                        }
+                        document.getElementById('weather_body').innerHTML = str;
+                    }
+                });
+            });
+        </script>
+
+            <!-- 연습2. book.json 읽어서 화면에 표시하기 -->
+        <div>
+            <input type="button" id="btn_get_book" value="책정보가져오기">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <td>제목</td>
+                        <td>저자</td>
+                        <td>가격</td>
+                    </tr>
+                </thead>
+                <tbody id="book_body"></tbody>
+            </table>
+        </div>
+
+        <script>
+            document.getElementById('btn_get_book').addEventListener('click', ()=> { // 클릭이벤트 만들었음.
+                var xhr = new XMLHttpRequest();
+                xhr.open('get', 'book.json', true);
+                xhr.send();
+                xhr.addEventListener('readystatechange', ()=>{
+                    if(xhr.readyState == 4 && xhr.status == 200){
+                        var data = JSON.parse(xhr.responseText); //파일전체를 문자열로 받아오기 떄문에, 원래모습인 자바스크립트객체로 바꿔줘야해서 파스메소드를 쓰는거임
+                        var bookList = data.books;
+
+                        var str = '';
+                        for(let i = 0; i < bookList.length; i++) {
+                            str += '<tr>';
+                            str += '<td>' + bookList[i].title + '</td>';
+                            str += '<td>' + bookList[i].author + '</td>';
+                            str += '<td>' + bookList[i].price + '</td>';
+                            str += '</tr>';
+
+                            // 아래 처럼 바꿀수도 있음.
+                            //  for(let p in bookList[i]){
+                            //     str += '<td>' + bookList[i][p] + '</td>';
+                            // }
+                        }
+                        document.getElementById('book_body').innerHTML = str;
+                    }
+                });
             });
         </script>
         
