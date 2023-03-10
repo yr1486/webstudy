@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../resources/js/lib/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+    <div id="box1">BOX1</div>
+    <script>
+
+        // 게터와 세터가 하나로. 
+        // text로 불러오고 text로 바꾸고가 가능하다는 뜻.
+
+
+        // 1. text() 메소드
+        // == textContent 와 같다.
+        console.log($('#box1').text()); // 게터
+        $('#box1').text('박스1');       // 세터 text의 오버로드임.텍스트의 커서 대보면 2개라고 뜸.
+        console.log($('#box1').text());
+
+    </script>
+
+
+
+    <div id="box2"><p>BOX2</p></div>
+    <script>
+        // 2. html() 메소드
+        // == innerHTML 과 같다.
+        console.log($('#box2').html());
+        $('#box2').html('<h1>BOX2</h1>');
+    </script>
+
+
+
+    <div id="box3">BOX3</div>
+    <script>
+
+        // 3. css() 메소드
+        // == style 과 같다.
+
+        $('#box3').css('color', '#c8c8c8');     // css('프로퍼티 속성')
+
+        // css 적용을 2개 하고 싶다 하면은
+        $('#box3').css('color', 'red')
+                  .css('font-size', '32px');
+
+        $('#box3').css({
+            'background-color': '#181818',
+            'text-align' : 'center'
+        });
+
+    </script>
+
+
+    <div>
+        <img id="img">
+    </div>
+
+    <script>
+
+        // 4. attribute(속성) 의 조작은
+        // == attr()
+        
+        $('#img').attr('alt', '이미지'); // alt : 이미지가 표시 안될때 텍스트로표현되는애
+        // 애트리뷰트로 작업했기 때문에 개발자도구에 엘러먼츠에서 div 토글해야 볼수 있거. 거기가면 바껴있는걸 볼수 있다.
+        // 더쉽게보려면 마우스모양 이모티콘눌러서 이미지 선택하면 해당 엘러먼츠가 어디있는지 알려줌.
+        $('#img').attr('src', '../../images/fruit1.jpg');
+        $('#img').attr('width', '200px');
+        
+        // 애트리뷰트의  속성 꺼내오기인데 이거 잘 안쓰고 참고로만 알아두자.
+        // 애트리뷰트의 조작을 더 많이 쓴다.
+        console.log($('#img').attr('id'));
+
+    </script>
+
+    <div>
+        <a id="link">링크</a>
+    </div>
+    <script>
+        // 5. property 조작은
+        // == prop() 사용한다.
+
+        // 애트리뷰트 태그안에 들어가있는 속성.
+        // 이걸 돔 객체로 자바스크립트가 가져갔을때 이걸. 프로퍼티라고 함.
+        // 속성은. 동일하게 아이디값을 갖는다.
+        // id는 에트리뷰트와 프로퍼티의 속성이 동일하다
+
+
+      console.log($('#link').prop('id')); // link라고 나온다.
+      $('#link').prop('href', 'https://naver.com');
+      // 프로퍼티로 작업해도. 동일하게 되는구나.를 알 수 있다.
+
+      // 아이디 외에? 다른 속성은 ? 이름이 다르거나, 값이 다를 수 있다고.
+
+      // 애트리뷰트와 프로퍼티는 유사한 점이 있지만 분명히 차이점이 있다.
+
+      $('#link').prop('target','_blank');
+
+    </script>
+
+    <div>
+        <ul id="menu">
+            <li id="kimchi">김치</li>
+        </ul>
+    </div>
+
+    <script>
+        /*
+            1. 부모-자식 관계로 '추가'하기. 위 아래 관계
+
+                1) 부모.prepend(자식) : 첫 번째 자식으로 추가하기
+                2) 부모.append(자식) : 마지막 자식으로 추가하기 , 제일 많이 씀. 앞에다 추가하는 경우는 드뭄.
+                3) 자식.prepandTo(부모) : 첫번째 자식으로 추가하기. 자식을 부모에 끼워넣을때.
+                4) 자식.appendTo(부모) : 마지막 자식으로 추가하기
+ 
+        */
+
+        var menu = $('#menu');
+        menu.prepend('<li id="cheese">치즈</li>'); 
+        menu.append('<li id="pizza">피자</li>');
+        menu.prepend($('<li>').attr('id', 'beef').text('소고기'));
+         // 위에 치즈와 소고기는 형식만 다를뿐 같은 기능임
+        menu.prepend($('<li>').attr('id', 'pork').text('돼지고기'));
+
+       /*
+        // '<li>'.attr('id', 'beef') 이;렇게되면 '<li>'. 이 일반객체라서 안되고
+        //  $('<li>').attr('id', 'beef') 이렇게 제이쿼리 랩핑을 통해 제이쿼리객체로 만들면 가능하다.
+        //그 다음에 프리펜드에 씌우면. 추가가 가능한거지.
+        // 얘와 menu.prepend()
+        // 얘를 합친게 $('<li>').attr('id', 'beef').text('소고기');
+        // menu.prepend($('<li>').attr('id', 'beef').text('소고기'));
+        */
+
+        $('<li id="americano">아메리카노</li>').prependTo(menu);
+        $('<li id="latte">라떼</li>').appendTo(menu);
+        $('<li>').attr('id', 'chicken').text('치킨').prependTo(menu);
+        $('<li>').attr('id', 'hamburger').text('햄버거').appendTo(menu);
+
+        /*
+            2. 형제 관계로 '추가'하기. 앞 뒤 관계
+
+                1) 형제.before(형재) : 이전 형제로 추가하기
+                2) 형제.after(형제)  : 다음 형제로 추가하기
+
+        */
+
+        // 김치 기준으로 가보자.
+        $('#kimchi').before('<li id="ramen">라면</li>'); // 리스트테그를 처음부터 넣는 방법도 있고 다른 방법도 있고.
+        $('#kimchi').after($('<li>').attr('id', 'rice').text('공기밥')); // 우와같은 기능이지만. 쓰는 방법을 달리해본 거니까. 연습해보기.
+   
+    </script>
+
+
+    <!-- 지워보자. -->
+    <!-- 지우는거 중요. 목록을 새로 고침 할 때. 등으로 쓰인다. -->
+
+
+    <div>
+        <ul id="movies">
+            <li id="terminator">터미네이터</li>
+            <li id="avatar">아바타</li>
+            <li id="alien">에일리언</li>
+        </ul>
+    </div>
+
+    <script>
+        // 1. 특정 요소만 제거하기
+        $('#terminator').remove();
+
+        // 2. 모든 하위(자식) 요소 제거하기
+        // 엠티가 많이 쓰임. 다 지워버리고 다시 만들기.
+        // 디비로부터 목록이 넘어왔을때 다 지우고 다시 만드는 예.
+        $('#movies').empty(); // 정확하게는. #movies 자체는 삭제되지 않고 남는다. 하위 요소만 날리는거.
+        // 데이터는 없으니까 눈에보이지는 않지만. 새로 넣어줄 상태가 된다.
+
+    </script>
+
+    
+</body>
+</html>

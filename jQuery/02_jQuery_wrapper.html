@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="../resources/js/lib/jquery-3.6.4.min.js"></script>
+
+</head>
+<body>
+    <script>
+        /*
+            jQuery wrapper
+            1. jQuery 객체가 jQuery의 기능(메소드)을 사용할 수 있다.
+            2. JavaScript의 일반 객체도 jQuery 객체로 변환하면 jQuery의 기능을 사용할 수 있다.
+            3. jQuery 객체로 변환할 때 jQuery wrapper가 사용된다.
+
+               jQuery wrapper 형태 2가지.
+                1) jQuery(일반객체)
+
+                2) $(일반객체)
+                    (제이쿼리를 줄여서 $ 이렇게 씀. 실제로 사용하는 모습!!!)
+                    일반객체가지고 제이쿼리 못써. 제이쿼리 객체로 바꾼 다음에 쓸 수 있어!!!
+                   
+
+                    일반 객체의 예를 들어보자.
+                    var str = 'Hello';
+                    var  n = 10;
+                    
+                    // 변수는 메소드를 부를 수 없어. 
+                    //위 두개 다 객체인거야.
+                    */
+        
+        
+
+
+    </script>
+
+    <script>
+
+        /*
+            jQuery의 load 이벤트
+                1. load 이벤트는 문서의 모든 요소를 인식할 수 있는 이벤트이다. 이안에서 작업하면 다 인식 가능하다.
+                2. load 이벤트 등록하는 방법 2가지.
+
+                    $(document)      // 다큐먼트는 자바스크립트의 객체니까. 제이쿼리로 감싸서. 제이쿼리 객체로 만든 거.
+                    
+                    
+                    1) load 이벤트 등록1
+                       $(document).ready(()=>{
+
+                       });
+
+                    2) load 이벤트 등록2
+                       $(function(){
+
+                       });
+                       
+                       수업에서는 2번 짧은 코드를 사용할거임.
+
+
+         */
+   </script>
+
+
+   <script>
+    // 적용해보자
+
+    // load 이벤트
+    // 먼저 로드이벤트 만들고 그안에 넣기
+    $(function(){
+        // 문서객체
+        var box = document.getElementById('box');
+        console.log(box); // 콘솔에 문제없이 인식된걸로 나옴 <div~</div>
+
+        // jQuery wrapper를 이용해서 문서 객체를 jQuery 객체로 변환하기
+        var jBox = $(box); // box를 제이쿼리로 묶어서 제이쿼리 객체로 바꾸고 jBox에 넣어둠
+        console.log(jBox); // 콘솔에 찍어보면 토글 내리면 프로퍼티에 쭉나오는게 메소드. 이 메소드들은 제이쿼리들의 메소드
+
+
+        //
+    });
+   </script>
+
+   <div id="box">Hello World</div>
+
+
+
+
+    
+
+
+
+
+
+
+</body>
+</html>

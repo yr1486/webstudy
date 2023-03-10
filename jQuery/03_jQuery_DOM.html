@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../resources/js/lib/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <!-- 스크립트를 상단. div를 하단에 놓고 연습하는 연습. -->
+    <script>
+        // 1. 태그로 인식하기
+        var div = $('div');
+        console.log(div); // 길이가 0인 배열로 인식된 상태를 볼 수 있음 // 배열로 인식한다.
+        //console.log($(div)); 이거 아님 주의
+
+        // 2. 아이디로 인식하기
+        var box = $('#box');
+        console.log(box); //객체로 인식한다
+
+        // 사용한 선택자에 따라서 배열이냐, 객체냐
+
+        // 3. 클래스로 인식하기
+        var wrap = $('.wrap');
+        console.log(wrap); // 배열로 인식한다.
+
+    </script>
+
+    <div id="box" class="wrap"></div>
+
+
+    <script>
+        $(function(){
+            /*
+                메소드 체이닝(method chaining)
+                $().children().children() 처럼 메소드를 연속해서 호출하는 방식을 메소드 체이닝 이라고 한다.
+            */
+
+            // 자식 호출에 대해 알아보자.
+
+            // 4. 자식 호출 1
+            console.log($('#ott > li')); // 선택자가 된거임 거기에 $() 감싸 ,맞는지 보려고 콘솔에 넣어.
+            // 얘는 자식 중 li 임
+
+            // 4. 자식 호출 2
+            console.log($('#ott').find('li'));
+            // 얘는 자식 중 li 임
+            // 위와 같음
+
+            console.log($('#ott a'));
+            // 후손 중 a 태그 선택
+
+            console.log($('#ott').find('a'));
+            // 후손 중 a 태그 선택
+            // 파인드라는건 자식만 아니라 후손도 찾을 수 있다.
+
+            // 4. 자식 호출 3
+            // 위에처럼 선택자 활용말고도 바로가져오는 메소드가 있음! 칠드런
+            console.log($('#ott').children()); // li가 찍힘.
+            // 얘는 '모든자식'임.
+
+            // 4. 자식의 자식 호출 
+            // 칠드런의 칠드런도 가능(자식의 자식. ==> a)
+            console.log($('#ott').children().children()); // 콘솔에 a찍힌걸 볼 수 있음.
+            // 얘는 모든자식의 모든자식임
+
+
+
+
+
+            // 5. 형제
+            console.log($('#netflex ~ li'));            //                 넷플릭스의 모든형제 중 li 호출해줘.
+            console.log($('#netflex').siblings('li'));  // 위와 뜻이 같음. 넷플릭스의 모든형제 중 li 호출해줘. 
+            
+            // 인접형제
+            console.log($('#netflex + li'));            //                 인접 형제 li 태그
+            console.log($('#netflex').next());          //                 인접 형제
+            
+            // 이전형제 (wave 기준으로 알아보자.)
+            console.log($('#wave').nextAll());          //                 다음 모든 형제
+            console.log($('#wave').prev());             //                 이전 형제        --- 여기서 처음보는 형태임
+            console.log($('#wave').prevAll());          //                 이전 모든 형제
+            console.log($('#netflex').siblings());      //                 모든 형제
+
+
+            // 6. 부모
+            // 완전 중요
+
+            console.log($('#netflex').parents());               // ott, div, body, html  / 모든 부모
+            console.log($('#netflex').parent());                // ott 하나              / 부모
+            console.log($('#netflex').parent().parent());       //                       / 부모의 부모
+            console.log($('#netflex').closest('div'));          //                       / 가장 가까운 div 부모
+            // 아래 디비전에 보면 div 2개있어. 그중 가까운거 조회됨
+
+        });
+    </script>
+
+    <div>
+        <div class="inner_wrap">
+            <ul id="ott">
+                <li id="netflex"><a href="javascript:viod(0)">넷플릭스</a></li>
+                <li id="disney"><a href="javascript:viod(0)">디즈니플러스</a></li>
+                <li id="wave"><a href="javascript:viod(0)">웨이브</a></li>
+                <li id="coopang"><a href="javascript:viod(0)">쿠팡플레이</a></li>
+                <li id="whatcha"><a href="javascript:viod(0)">왓챠</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+
+
+
+
+    <script>
+        $(function(){ // 이안에 적어줘야. 모두 다 인식한다.
+
+            // type으로 지정하기, 타입으로 불러오기.
+
+            console.log($('input[type=text]')); // 인풋 1개
+            console.log($(':text')); // 인풋 1개
+            console.log($(':password')); // 인풋 1개.
+            console.log($(':radio')); //인풋이 3개가 있다. 하고 잘 불러옴.
+
+            // 여러개 선택 말고. 하나만 불러오고 싶다 할때.
+
+            console.log($('#frm :text')); // 인풋 1개
+            console.log($('#frm :password')); // 인풋 1개.
+            console.log($('#frm :radio')); //인풋이 3개가 있다. 하고 잘 불러옴.
+            
+            // 상태로 지정하기.(:focus, :checked, :selected)
+            // 대상을 제한 걸어서 사용할 수  있다.
+            console.log($('#frm :focus'));      // 포커스를 가진 요소
+            console.log($('#frm :checked'));    // 체크된 요소(radio, checkbox, select)
+            console.log($('#frm :radio:checked')); // radio 중 체크된 요소
+            console.log($('#frm :selected')); // 선택된 요소(select)
+
+            // 상태 확인 메소드
+            // is(':focus')    : 포커스를 가졌다면 true 반환 (마우스 커서가 들어가 있는거 포커스)
+            // is(':checked')  : 체크되었다면 true 반환
+            // is(':selected') : 선택되었다면 true 반환
+
+            $('#frm :text').focus(); // 포커스를 주기위한 포커스 메소드(); // 새로고침하고 확인해보기.
+            if($('#frm :text').is(':focus')){
+                console.log('text가 포커스를 가졌다.');
+            }
+            else{
+                console.log('text가 포커스를 가지지 않았다.');
+            }
+
+        });
+    </script>
+
+    <div class="container">
+        <form id="frm">
+            <div><input type="text"></div>
+            <div><input type="password"></div>
+            <div>
+                <input type="radio" name="gender" value="male">남
+                <input type="radio" name="gender" value="female">여
+                <input type="radio" name="gender" value="none" checked>선택안함 
+                <!-- checked : 기본선택을 얘로 하겠다. -->
+            </div>
+            <div>
+                <select>
+                    <option value="">선택</option>
+                    <option value="02" selected>02</option>
+                    <option value="031">031</option>
+                    <option value="032">032</option>
+                </select>
+            </div>
+        </form>
+    </div>
+
+    
+</body>
+</html>
