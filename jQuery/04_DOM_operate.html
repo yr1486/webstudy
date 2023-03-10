@@ -59,7 +59,6 @@
     <div>
         <img id="img">
     </div>
-
     <script>
 
         // 4. attribute(속성) 의 조작은
@@ -84,7 +83,7 @@
         // 5. property 조작은
         // == prop() 사용한다.
 
-        // 애트리뷰트 태그안에 들어가있는 속성.
+        // 애트리뷰트는 태그안에 들어가있는 속성.
         // 이걸 돔 객체로 자바스크립트가 가져갔을때 이걸. 프로퍼티라고 함.
         // 속성은. 동일하게 아이디값을 갖는다.
         // id는 에트리뷰트와 프로퍼티의 속성이 동일하다
@@ -104,7 +103,7 @@
 
     <div>
         <ul id="menu">
-            <li id="kimchi">김치</li>
+            <li id="kimchi">0. 김치</li>
         </ul>
     </div>
 
@@ -119,27 +118,37 @@
  
         */
 
+        // 부모.자식
         var menu = $('#menu');
-        menu.prepend('<li id="cheese">치즈</li>'); 
-        menu.append('<li id="pizza">피자</li>');
-        menu.prepend($('<li>').attr('id', 'beef').text('소고기'));
+        menu.prepend('<li id="cheese">1. 치즈</li>'); 
+        
+        menu.append('<li id="pizza">2. 피자</li>'); // 전체를 통으로 넣어주거나
+        menu.prepend($('<li>').attr('id', 'beef').text('3. 소고기')); // 제이쿼리객체로 만들고,아이디와,텍스트를 추가하거나
          // 위에 치즈와 소고기는 형식만 다를뿐 같은 기능임
-        menu.prepend($('<li>').attr('id', 'pork').text('돼지고기'));
 
+        menu.append($('<li>').attr('id', 'pork').text('4. 돼지고기'));
        /*
-        // '<li>'.attr('id', 'beef') 이;렇게되면 '<li>'. 이 일반객체라서 안되고
-        //  $('<li>').attr('id', 'beef') 이렇게 제이쿼리 랩핑을 통해 제이쿼리객체로 만들면 가능하다.
-        //그 다음에 프리펜드에 씌우면. 추가가 가능한거지.
+        // '<li>'.attr('id', 'beef') 이렇게되면 '<li>'. 이 일반객체라서 안되고
+        //  $('<li>').attr('id', 'beef') li에 이렇게 제이쿼리 랩핑을 통해 제이쿼리객체로 만들면 가능하다.
+        //그 다음에 제이쿼리 메소드인. 프리펜드에 씌우면. 추가가 가능한거지.
         // 얘와 menu.prepend()
         // 얘를 합친게 $('<li>').attr('id', 'beef').text('소고기');
         // menu.prepend($('<li>').attr('id', 'beef').text('소고기'));
         */
 
+        // 자식.부모
         $('<li id="americano">아메리카노</li>').prependTo(menu);
         $('<li id="latte">라떼</li>').appendTo(menu);
         $('<li>').attr('id', 'chicken').text('치킨').prependTo(menu);
         $('<li>').attr('id', 'hamburger').text('햄버거').appendTo(menu);
 
+
+
+
+
+
+
+        $('<li>').attr('id','americano').text('아메리카노')   4l..prependTo(menu);
         /*
             2. 형제 관계로 '추가'하기. 앞 뒤 관계
 
