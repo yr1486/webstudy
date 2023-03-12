@@ -31,7 +31,9 @@
         // 2. html() 메소드
         // == innerHTML 과 같다.
         console.log($('#box2').html());
+
         $('#box2').html('<h1>BOX2</h1>');
+        console.log($('#box2').html());
     </script>
 
 
@@ -69,6 +71,16 @@
         // 더쉽게보려면 마우스모양 이모티콘눌러서 이미지 선택하면 해당 엘러먼츠가 어디있는지 알려줌.
         $('#img').attr('src', '../../images/fruit1.jpg');
         $('#img').attr('width', '200px');
+
+        /*
+        위와 같은 일을 하는 문장이고, attr를 객체로 만들었음.
+        attr 의 코드 중복을 줄일 수 있음.
+        $('#img').attr({
+            'alt' : '이미지',
+            'src' : '../../images/fruit1.jpg',
+            'width' : '200px'
+        });
+        */
         
         // 애트리뷰트의  속성 꺼내오기인데 이거 잘 안쓰고 참고로만 알아두자.
         // 애트리뷰트의 조작을 더 많이 쓴다.
@@ -90,16 +102,26 @@
 
 
       console.log($('#link').prop('id')); // link라고 나온다.
+      // $('#link').attr('href', 'https://www.naver.com');
+
       $('#link').prop('href', 'https://naver.com');
       // 프로퍼티로 작업해도. 동일하게 되는구나.를 알 수 있다.
 
-      // 아이디 외에? 다른 속성은 ? 이름이 다르거나, 값이 다를 수 있다고.
+      console.log($('link').prop('id')); // #link는 있지만, .link(클래스), link(기본? 선택자)가 현재 없음. 없어서 undefined
 
+      // 아이디 외에? 다른 속성은 ? 이름이 다르거나, 값이 다를 수 있다고.
       // 애트리뷰트와 프로퍼티는 유사한 점이 있지만 분명히 차이점이 있다.
 
       $('#link').prop('target','_blank');
 
     </script>
+
+
+
+
+
+
+
 
     <div>
         <ul id="menu">
@@ -154,7 +176,7 @@
         // 김치 기준으로 가보자.
         $('#kimchi').before('<li id="ramen">라면</li>'); // 리스트테그를 처음부터 넣는 방법도 있고,
         $('#kimchi').after($('<li>').attr('id', 'rice').text('공기밥')); // 리스트를 객체로 만들어서 쓰는 방법도 있고.
-   
+
     </script>
 
 
@@ -180,7 +202,7 @@
             
             $('#movies').empty(); // 정확하게는. #movies 자체는 삭제되지 않고 남는다. 하위 요소만 날리는거.
             // 데이터는 없으니까 눈에 보이지는 않지만. 새로 넣어줄 상태가 된다.
-
+            
     </script>
 
     

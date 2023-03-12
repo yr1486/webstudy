@@ -92,7 +92,7 @@
 
             console.log($('#netflex').parents());               // ott, div, body, html  / 모든 부모
             console.log($('#netflex').parent());                // ott 하나              / 부모
-            console.log($('#netflex').parent().parent());       //                       / 부모의 부모
+            console.log($('#netflex').parent().parents());       //                       / 부모의 부모
             console.log($('#netflex').closest('div'));          //                       / 가장 가까운 div 부모
             // 아래 디비전에 보면 div 2개있어. 그중 가까운거 조회됨
 
@@ -134,7 +134,7 @@
             
             // 상태로 지정하기.(:focus, :checked, :selected)
             // 대상을 제한 걸어서 사용할 수  있다.
-            console.log($('#frm :focus'));      // 포커스를 가진 요소
+            console.log($('#frm :focus'));      // 포커스를 가진 요소 // 없음
             console.log($('#frm :checked'));    // 체크된 요소(radio, checkbox, select)
             console.log($('#frm :radio:checked')); // radio 중 체크된 요소
             console.log($('#frm :selected')); // 선택된 요소(select)
@@ -144,7 +144,7 @@
             // is(':checked')  : 체크되었다면 true 반환
             // is(':selected') : 선택되었다면 true 반환
 
-            $('#frm :text').focus(); // 포커스를 주기위한 포커스 메소드(); // 새로고침하고 확인해보기.
+            $('#frm :text').focus(); // 포커스를 주기 위한 포커스 메소드(); // 새로고침하고 확인해보기.
             if($('#frm :text').is(':focus')){
                 console.log('text가 포커스를 가졌다.');
             }
