@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <script src="../resources/js/lib/jquery-3.6.4.min.js"></script>
 </head>
+
 <body>
     <!-- 스크립트를 상단. div를 하단에 놓고 연습하는 연습. -->
     <script>
@@ -26,10 +28,11 @@
         console.log(wrap); // 배열로 인식한다.
 
     </script>
-
     <div id="box" class="wrap"></div>
 
 
+
+    
     <script>
         $(function(){
             /*
@@ -81,7 +84,7 @@
             console.log($('#wave').nextAll());          //                 다음 모든 형제
             console.log($('#wave').prev());             //                 이전 형제        --- 여기서 처음보는 형태임
             console.log($('#wave').prevAll());          //                 이전 모든 형제
-            console.log($('#netflex').siblings());      //                 모든 형제
+            console.log($('#wave').siblings());         //                 모든 형제
 
 
             // 6. 부모
