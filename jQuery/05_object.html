@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 제이쿼리 쓰고 싶으면. 스크립트를 넣어줘야함. -->
+    <script src="../resources/js/lib/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <script>
+        // 2가지 있었음.
+        // $(function(){});
+        // $(()=>{});
+        
+        $(function(){
+            // 객체 생성
+            var obj = {
+                'title': '홍길동전',
+                'author': '허균',
+                'price': 10000
+            };
+
+            // 프로퍼티 추가하기
+            $.extend(
+                obj,
+                // 프로퍼티를 추가할 때 별도의 객체로 만들어서 넣어줘야함.
+                { 
+                    'publisher': '좋은출판사',
+                    'pubDate': '2023-03-13'
+                }
+                )
+                
+                //$('<dl>').appendTo($('#box'));
+                //추가할 애를 먼저 객체로 만들고 박스도 객체로 만들어서 안에 넣고
+                $('#box').append('<dl>');
+                // 박스를 객체로 만들고 추가.
+                        
+                // 위 둘의 차이점 이해하기.
+                        
+                        
+                //  객체의 순회-1 (for-in문)             
+                var dl = $('<dl>');
+                for(let p in obj) {
+                    dl.append('<dt>' + p + '</dt>');      //프로퍼티 따로
+                    dl.append('<dd>' + obj[p] + '</dd>'); // 밸류 따로
+                }
+                $('#box').append(dl);
+
+                // 객체의 프로퍼트 순회-2(each 메소드, 가장 많이 씀)
+               // $.each(객체, function(프로퍼티, 값){});
+               // $.each(객체, (프로퍼티, 값)=>{});
+                         
+                var dl = $('<dl>');
+                $.each(obj, (p,value)=>{
+                    dl.append('<dt>' + p + '</dt>');
+                    dl.append('<dd>' + value + '</dd>');
+                });
+                $('#box').append(dl);
+                // 콜백이면 함수. 익명함수가 일반적으로쓰임
+
+                // $(obj).each(()=>{}); 도 가능
+
+        });
+
+
+
+        
+    </script>
+    <div id="box"></div>
+    
+</body>
+</html>

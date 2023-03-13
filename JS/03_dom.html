@@ -12,22 +12,22 @@
         /*
         DOM
         1. Document Object Model (문서 객체 모델)
-        2. HTML문서(document)의 구성 요소(태그) 를 객체(object)로 처리할 수 있는 방식이다.
+        2. HTML문서(document)의 구성 요소(태그)를 객체(object)로 처리할 수 있는 방식이다.
         객체로 만든다는 뜻.
 
         3. 문서 객체 알아내기
         css 생각하기. 
-        1) document.getElementById('아이디적어주기')- 중복값                                   : 변수로 처리 (문서객체가 하나만 있으니까)
+        1) document.getElementById('아이디적어주기')- 중복값 없는 애                           : 변수로 처리 (문서객체가 하나만 있으니까)
         2) document.getElementsByClass('클래스')    - 얘는 여러개 되니까  s 복수형으로 사용    : 배열로 처리
         3) document.getElementsTagName('태그')      - div 가져오라하면 너무 많으니까 잘 안쓰임 : 배열
         4) document.querySelector('선택자')         - 셀렉터 이용한 방법                       : 변수
         5) document.querySelectorAll('선택자')                                                 : 배열
         (하나의 요소밖에 없더라도 배열에 집어넣어서 사용한다)
+
         */
     </script>
 
 
-                <!--box2번 객체화(돔) 되는 걸 하는 중  -->
 
 
     <script>
@@ -56,7 +56,8 @@
         // 2. 클래스
         var box2 = document.getElementsByClassName('box2');
         console.log(box2);
-        // 클래스는 아이디와 다르게, 속성?이 다를 수 있어서 에트리뷰트에 값을 주고 웹으로가서 f12누르고 프로퍼티에서 한번 찾아봐야 함.
+
+        // 클래스는 아이디와 다르게, 속성?(속성이름)이 다를 수 있어서 에트리뷰트에 값을 주고 웹으로가서 f12누르고 프로퍼티 메뉴에서 한번 찾아봐야 함.
 
         // 3. 태그
         var div = document.getElementsByTagName('div');
@@ -74,6 +75,7 @@
 
         var div = document.querySelector('div'); // 태그
         (console).log(div);
+        // div 태그가 2개 이지만 쿼리셀렉터는 변수, 한개만 담으니까. 하나가 담아지고 출력됨.
 
 
         // 5. 선택자(querySelectorAll)

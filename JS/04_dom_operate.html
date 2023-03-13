@@ -27,7 +27,7 @@
 
     <div id="box2"><p>문단</p></div>
     <script>
-        // textContent는 태그를 제외한 내부 텍스트만을 의미한다.
+        // textContent는 태그를 제외한 '내부 텍스트'만을 의미한다.
         var box2 = document.getElementById('box2');
         console.log(box2.textContent);
 
@@ -41,13 +41,15 @@
         // 내부 HTML 요소 : innerHTML
         // 내부HTML은 태그를 이해해서 넣어주는데
         // textcontent 는 그냥 텍스트로 때려넣어서 태그 적용이 안된다.
-        var box3 = document.getElementById('box3') // 알아내자
+
+        var box3 = document.getElementById('box3'); // 알아내자
         box3.innerHTML = '<p>문단</p>';   // 집어넣어보자.
+        console.log(box3.innerHTML);
+
     </script>
 
     <!--
-        지금 위에 box2와 box3는 웹브라우저 엘러먼츠창에서와 같이 변화가 없어
-        실제로도 변화가 없어. 변화가 없는게 핵심이고.
+        지금 위에 box2와 box3는 웹브라우저 엘러먼츠창에서는 똑같은 '<p>문단</p>' 로 보이지만,
         사용 용도에 따라서 달리 쓰는거임
         내가 단지 텍스트로 읽어 갈꺼면 textContent 를 사용해도 되고
         내가 태그를 읽히게 하고 싶으면 innerHTML 를 써야하는거.

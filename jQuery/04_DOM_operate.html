@@ -18,7 +18,7 @@
 
         // 1. text() 메소드
         // == textContent 와 같다.
-        console.log($('#box1').text()); // 게터
+        console.log($('#box1').text()); // 게터 // 텍스트안에 아무것도 없으면 게터와 같은 기능을 한다.
         $('#box1').text('박스1');       // 세터 text의 오버로드임.텍스트의 커서 대보면 2개라고 뜸.
         console.log($('#box1').text());
 
@@ -30,6 +30,7 @@
     <script>
         // 2. html() 메소드
         // == innerHTML 과 같다.
+        // 내부에 텍스트말고 html과 같은 테그가 있으면 html메소드 이용하기.
         console.log($('#box2').html());
 
         $('#box2').html('<h1>BOX2</h1>');
@@ -63,8 +64,8 @@
     </div>
     <script>
 
-        // 4. attribute(속성) 의 조작은
-        // == attr()
+        // 4. attr() 메소드
+        // == attribute(속성) 
         
         $('#img').attr('alt', '이미지'); // alt : 이미지가 표시 안될때 텍스트로표현되는애
         // 애트리뷰트로 작업했기 때문에 개발자도구에 엘러먼츠에서 div 토글해야 볼수 있거. 거기가면 바껴있는걸 볼수 있다.
@@ -97,8 +98,14 @@
 
         // 애트리뷰트는 태그안에 들어가있는 속성.
         // 이걸 돔 객체로 자바스크립트가 가져갔을때 이걸. 프로퍼티라고 함.
-        // 속성은. 동일하게 아이디값을 갖는다.
-        // id는 에트리뷰트와 프로퍼티의 속성이 동일하다
+        // 객체로 가지고 갔을 때 객체의 속성이 프로퍼티
+
+        // 에트리뷰트와 프로퍼티의 속성이 동일하다. 같은 속성이여도 부르는 이름은 다를 수 있다. 
+        // EX) 에트리뷰트에서는 class. 프로퍼티에서는 className 
+        // 속성의 이름은 다르지만 가지고 있는 값이 같으니까. 값을 먼저 주고. 개발자 도구에서 . 속성의 이름을 찾으면 됨.
+
+
+        // 문서. 즉 태그들을 불러다가. 객체로 저장시킨다. // Ex) var b = document.getElementById('box1');
 
 
       console.log($('#link').prop('id')); // link라고 나온다.
@@ -204,6 +211,132 @@
             // 데이터는 없으니까 눈에 보이지는 않지만. 새로 넣어줄 상태가 된다.
             
     </script>
+
+    <div>
+        <form id="frm">
+            <div>
+                 <input type="text" placeholder="아이디">
+             </div>
+             <div>
+                <input type="password" placeholder="비밀번호">
+             </div>
+             <div>
+                <input type="radio" name="gender" value="male" id="male">
+                <label for="male">남자</label>
+                <input type="radio" name="gender" value="female" id="female">
+                <label for="female">여자</label>
+                <input type="radio" name="gender" value="none" id="none" checked>
+                <label for="none">선택안함</label>
+             </div>
+             <div>
+                <select>
+                    <option value="">선택하세요</option>
+                    <option value="서울">서울</option>
+                    <option value="경기" selected>경기</option>
+                    <option value="인천">인친</option>
+                    <!-- 경기가 열려있는 상태로 만들어짐 -->
+                </select>
+             </div>
+             <div>
+                <textarea>textarea는 여기에 입력한 값이 태그 내부에 들어간다.</textarea>
+             </div>
+        </form>
+    </div>
+
+    <script>
+        $('#frm :text').css('background-color', 'silver');
+        // 인풋에 입력된 값은. 밸류 속성에. 저장이 된다.. 정확히는 밸류프로퍼티에 들어가는거임. 비밀번호도 마찬가지.
+        $('#frm  :text').prop('value', 'admin');
+        // 이렇게 밸류값을 조작 할 수 있지만, 전용 메소드가 따로 있음.
+        // 프로퍼티 불러서 할 필요 없이 val메소드를 이용하면 됨. 프로퍼티로 사용하지 말기.
+        $('#frm :text').val('master');
+        // 실제로 입력되는 입력값을 master로 조작함.
+        // 입력값을 조작하는 val 메소드
+        // 사용 예시 ) 하이푼을 입력하면 안되는데 사용자가 하이푼을 입력한 경우 지워주는 기능 등으로 사용
+    
+        
+        // input type=password
+        $('#frm :password').val('1234');
+
+        // input type=radio
+        console.log($('#frm :radio').val());
+        // 첫번째 radio의 value
+        // 첫번째 라디오가 궁금한게 아니라. 사용자가 선택한 첵크드가 궁금한거임
+
+        console.log($('#frm :radio:checked').val());
+        // 체크된 radio의 밸류.
+
+
+        // 인풋은 :얘로도 부를수있는 기능이 있는데 셀렉트는 그런기능이 없어.그냥 이름으로 불러
+        console.log($('#frm select').val());
+        // 선택된 옵션의 밸류가 나온다. // 경기
+        // 경기의 셀렉티드를 없애면 콘솔에 공백이 나옴. 첫번째 밸류가 공백이기 때문.
+
+        // 얘도 콜론같은 줄임표시가 없어서 그냥 이름으로 불러
+        console.log($('#frm textarea').text());
+        // textarea는 val()를 사용하지 않고. text()를 사용한다.
+        // 태그내부의 텍스트는 택스트로 부른다.
+        $('#frm textarea').text('hi');
+        
+    </script>
+
+    <style>
+        .big-text{
+            font-size: 2em;
+        }
+        .red-text {
+            color: red;
+        }
+    </style>
+
+    <div id="box4" class="invisible">
+        <!-- invisible : 안보인다.  -->
+        Hello World
+    </div>
+    <script>
+
+        // class 속성의 추가 / 제거 / 토글 을 알아보자 .
+
+
+        // class 속성 추가하기
+
+        // class 추가 메소드가 따로 있다.
+        $('#box4').addClass('big-text');
+        // 개발자도구 엘러먼츠가서 보면 테그에 클래스가 추가되었음.
+
+        // 메소드 체이닝도 가능하지만, 잘 안쓰이고,
+        $('#box4').addClass('big-text').addClass('red-text');
+        
+        // 원래 클래스의 2가지 속성을 줄때 공백으로 준다
+        // <div class="big-text" "red-text">
+
+        // 이것처럼. 아래에 이렇게 공백으로 씀
+        $('#box4').addClass('big-text red-text');
+
+        // class 속성 제거
+        $('#box4').removeClass('red-text');
+
+        // 둘다 제거 . 두 문장 같은 뜻.
+        $('#box4').removeClass('big-text').removeClass('red-text');
+        $('#box4').removeClass('big-text red-text');
+
+        // 사용자가 회원가입 시 아이디란에. 사용되는데.
+        // 통과했으면 녹색, 중복이거나,이미사용했던 아이디면 레드. 이렇게 조작 가능
+
+
+        // class의 속성. 토글
+        // 토글 : 추가와 제거가 번갈아 가면서 적용, 반복되는 것)
+        $('#box4').toggleClass('big-text').toggleClass('big-text');
+        // $('#box4').toggleClass('red-text');
+        // $('#box4').toggleClass('red-text').toggleClass('red-text');
+
+
+        // class 속성 확인
+        if($('#box4').hasClass('invisible')){
+            $('#box4').css('opacity', '0'); // 투명도를 0으로 설정하면 안보인다.
+        }
+
+        </script>
 
     
 </body>
