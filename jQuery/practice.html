@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../resources/js/lib/jquery-3.6.4.min.js"></script>
+</head>
+
+<body>
+    <script>
+        $(function(){
+
+            var fourseason = ['spring', 'summer', 'autumn', 'winter'];
+
+            var str = '';
+            $.each(fourseason, (i, element)=>{
+                str += '<div>' + i + '. ' + element + '</div>';
+
+            });
+            $('#box1').append(str);
+
+        });
+    </script>
+    <div id="box1"></div>
+</body>
+</html>

@@ -69,11 +69,21 @@
         $('#box').append('<button id="btn">버튼</button>');
 
         // 동적 요소에 이벤트 등록하기
-        $('#btn').on('click', function(event){
-            alert('클릭했다.');
+        $('#btn').on('click', function(){
+            
+            $(this).after('<p>하하하</p>'); //이벤트 리스너에서 동적 요소 생성하기
+        });
+
+        // 이벤트로 생성한 동적 요소에 이벤트 등록하기
+        $('#box').on('click', 'p', function(){
+            $(this).css('background-color', 'yellow');
         });
 
     </script>
+
+
+
+
     
 </body>
 </html>
