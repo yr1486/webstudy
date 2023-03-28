@@ -1,0 +1,54 @@
+body {
+
+    display: flex;
+    background-color: #F5F6F7;
+    width: '460px';
+}
+
+.wrap {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 auto;
+    font-family: 'Malgun Gothic', sans-serif;
+    
+    
+}
+
+a {
+    
+    text-decoration: none;
+    color: #000000;
+}
+
+
+#id, #pw {
+    border-color: #007700;
+    width: 460px;
+    height: 20px;
+
+}
+
+
+#btn_login {
+    background-color: #007700;
+    width: 460px;
+    color: #F5F6F7;
+
+
+}
+
+#btn_signup {
+    background-color: #007777;
+    color: #F5F6F7;
+}
+
+#btn_search{
+    background-color: #007777;
+    color: #F5F6F7;
+}
+
+
+#id, #pw:focus {
+    border-color: #FF8800;
+    
+}

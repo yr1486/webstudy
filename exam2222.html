@@ -33,14 +33,26 @@
         // 제이쿼리는 이 3가지 중에서 표준이벤트를 사용한다.
     </script>
 
-<button id="to_site">이동</button>
+
+
+
+
+
+
+
+
+
+<form id="frm" action="https://search.naver.com/search.naver">
+    
+        <input type="text" name="query" id="query">
+        <input type="submit" value="네이버검색" id="btn">
+</form>
 <script>
-    document.getElementById('to_site').onclick = function(){
-        location.href = "https://www.google.com";
-        //또는 
-        //open('https://www.google.com');
-    } 
+    document.getElementById('btn').onclick = function(event){
+        alert('검색어는' + document.getElementById('query').value + '입니다.');
+    }
 </script>
+
     
 </body>
 </html>
